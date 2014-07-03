@@ -1,0 +1,21 @@
+<%= form_for(@swarm_behavior) do |f| %>
+  <% if @swarm_behavior.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@swarm_behavior.errors.count, "error") %> prohibited this swarm_behavior from being saved:</h2>
+
+      <ul>
+      <% @swarm_behavior.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.number_field :rating %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comparator_id: 1
+  property_a_id: 1
+  property_b_id: 1
+  random_property_b: false
+  depth_level: 1
+  if_property_ids: MyString
+  if_action_ids: MyString
+  else_property_ids: MyString
+  else_action_ids: MyString
+  if_number_bank: MyString
+  else_number_bank: MyString
+  subbehavior_ids: MyString
+
+two:
+  comparator_id: 1
+  property_a_id: 1
+  property_b_id: 1
+  random_property_b: false
+  depth_level: 1
+  if_property_ids: MyString
+  if_action_ids: MyString
+  else_property_ids: MyString
+  else_action_ids: MyString
+  if_number_bank: MyString
+  else_number_bank: MyString
+  subbehavior_ids: MyString

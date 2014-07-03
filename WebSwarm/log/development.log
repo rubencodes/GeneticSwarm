@@ -1,0 +1,1791 @@
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20140702235848)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "school" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140702235848"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateSwarmBehaviors (20140703001106)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "swarm_behaviors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comparator_id" integer, "property_a_id" integer, "property_b_id" integer, "random_property_b" boolean, "depth_level" integer, "if_property_ids" varchar(255), "if_action_ids" varchar(255), "else_property_ids" varchar(255), "else_action_ids" varchar(255), "if_number_bank" varchar(255), "else_number_bank" varchar(255), "subbehavior_ids" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140703001106"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-02 19:16:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 55ms (Views: 40.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 19:16:36 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 925ms (Views: 917.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 19:16:37 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPropertiesToSwarmBehavior (20140703011504)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "swarm_behaviors" ADD "velocity_scale" decimal[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "swarm_behaviors" ADD "max_speed" decimal
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "swarm_behaviors" ADD "normal_speed" decimal[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "swarm_behaviors" ADD "neighborhood_radius" decimal
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "swarm_behaviors" ADD "separation_weight" decimal[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "swarm_behaviors" ADD "cohesion_weight" decimal
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "swarm_behaviors" ADD "pacekeeping_weight" decimal[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "swarm_behaviors" ADD "rand_motion_probability" decimal
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140703011504"]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAlignmentWeightToSwarmBehavior (20140703011742)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "swarm_behaviors" ADD "alignment_weight" decimal[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140703011742"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 21:19:24 -0500
+
+LoadError (cannot load such file -- /Users/ruben/Workspace/Development/Java/Swarm/WebSwarm/config/routes.rb):
+  activesupport (4.0.0) lib/active_support/dependencies.rb:222:in `load'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:222:in `block in load'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:213:in `load_dependency'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:222:in `load'
+  railties (4.0.0) lib/rails/application/routes_reloader.rb:40:in `block in load_paths'
+  railties (4.0.0) lib/rails/application/routes_reloader.rb:40:in `each'
+  railties (4.0.0) lib/rails/application/routes_reloader.rb:40:in `load_paths'
+  railties (4.0.0) lib/rails/application/routes_reloader.rb:16:in `reload!'
+  railties (4.0.0) lib/rails/application/routes_reloader.rb:26:in `block in updater'
+  activesupport (4.0.0) lib/active_support/file_update_checker.rb:75:in `call'
+  activesupport (4.0.0) lib/active_support/file_update_checker.rb:75:in `execute'
+  railties (4.0.0) lib/rails/application/routes_reloader.rb:7:in `execute'
+  railties (4.0.0) lib/rails/application/finisher.rb:81:in `block (2 levels) in <module:Finisher>'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:397:in `_run__685948213139052059__prepare__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:74:in `prepare!'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:62:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ruben/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ruben/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ruben/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 21:20:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 126ms (Views: 109.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 21:20:13 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 21:25:03 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:07 -0500
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[36mSwarmBehavior Load (0.7ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  Rendered swarm_behaviors/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 16ms (Views: 9.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:16 -0500
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-07-02 21:28:23 -0500
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (44.5ms)
+  Rendered users/new.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 65ms (Views: 55.0ms | ActiveRecord: 8.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-07-02 21:28:32 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "user"=>{"username"=>"ruben", "password"=>"[FILTERED]", "school"=>"Bowdoin"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (7.8ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:101f190f8,'0.5801773263 498072E0',18(45)>], ["cohesion_weight", #<BigDecimal:101f197b0,'0.8032755134 745881E0',18(45)>], ["comparator_id", 0], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,0,1,0,2,2,1,2"], ["else_number_bank", ",69,95,78,,,0.24610879975444477,0.6913466257254862"], ["else_property_ids", "10,4,3,3,10,10,7,6"], ["if_action_ids", "1,1,1,2,1,0"], ["if_number_bank", "9,8,0.6163703837186149,3,0.7028874525759155,73"], ["if_property_ids", "1,2,7,4,7,4"], ["max_speed", #<BigDecimal:101f19ee0,'0.3E1',9(36)>], ["neighborhood_radius", #<BigDecimal:101f19d28,'0.22E2',9(36)>], ["normal_speed", #<BigDecimal:101f19e40,'0.7E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:101f195a8,'0.3583500036 349029E0',18(45)>], ["property_a_id", 6], ["property_b_id", 9], ["rand_motion_probability", #<BigDecimal:101f19378,'0.3466257664 747848E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:101f19c38,'0.8E1',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:101f19f58,'0.9213127886 46047E-1',18(45)>]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:10157c748,'0.9353270704 48434E0',18(45)>], ["cohesion_weight", #<BigDecimal:10157d080,'0.5206402476 674035E0',18(45)>], ["comparator_id", 0], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,1,1,2,2,1,1,2,2"], ["else_number_bank", "0.9407269553499662,7,0.06860445683757412,2,0.009455797381143705,,0.0680438005535744,95,"], ["else_property_ids", "7,1,0,1,0,10,8,3,9"], ["if_action_ids", "1,2,1,1,2,1,1"], ["if_number_bank", ",34,,61,0.32313638694177027,0.3458044470523376,"], ["if_property_ids", "9,4,10,3,7,7,10"], ["max_speed", #<BigDecimal:10157d580,'0.4E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10157d418,'0.72E2',9(36)>], ["normal_speed", #<BigDecimal:10157d508,'0.8E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10157cdb0,'0.9193001242 323491E0',18(45)>], ["property_a_id", 8], ["property_b_id", 8], ["rand_motion_probability", #<BigDecimal:10157c9a0,'0.4309386704 80968E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:10157d350,'0.51E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:10157d620,'0.5214978396 722695E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:101585cd0,'0.9009487095 506139E0',18(45)>], ["cohesion_weight", #<BigDecimal:101586338,'0.4741680966 137691E0',18(45)>], ["comparator_id", 0], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2"], ["else_number_bank", "39"], ["else_property_ids", "3"], ["if_action_ids", "0,1,1"], ["if_number_bank", "0.8629547194334748,29,"], ["if_property_ids", "5,4,9"], ["max_speed", #<BigDecimal:1015866f8,'0.5E1',9(36)>], ["neighborhood_radius", #<BigDecimal:101586608,'0.92E2',9(36)>], ["normal_speed", #<BigDecimal:101586680,'0.1E2',9(36)>], ["pacekeeping_weight", #<BigDecimal:101586130,'0.5656154692 133185E0',18(45)>], ["property_a_id", 8], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:101585f28,'0.1196107395 69713E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:101586518,'0.89E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:101586770,'0.8871836096 078088E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1015a63e0,'0.7441046581 460804E0',18(45)>], ["cohesion_weight", #<BigDecimal:1015a6ac0,'0.4876735952 096373E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,1"], ["else_number_bank", ",0.051924572945306946"], ["else_property_ids", "9,0"], ["if_action_ids", "1,2,1,1,1"], ["if_number_bank", "0.41849057702510994,0.015323035059257894,0.09512857385101986,0.0022891597435186427,0.03538060169176203"], ["if_property_ids", "5,0,0,0,0"], ["max_speed", #<BigDecimal:1015a72e0,'0.3E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1015a7060,'0.32E2',9(36)>], ["normal_speed", #<BigDecimal:1015a71a0,'0.7E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1015a6840,'0.3371941238 524303E0',18(45)>], ["property_a_id", 3], ["property_b_id", 10], ["rand_motion_probability", #<BigDecimal:1015a6638,'0.4952004670 487359E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1015a6cf0,'0.1E1',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:1015a7510,'0.4008161181 918139E-1',18(45)>]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:101f8bc98,'0.3651661526 496802E0',18(45)>], ["cohesion_weight", #<BigDecimal:101f80370,'0.8984900606 397225E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,2,0,1,1,0"], ["else_number_bank", "0.5276031159184594,0.08351589420124411,10,36,0.6458003308777466,0.02287352209020608"], ["else_property_ids", "6,0,1,3,6,0"], ["if_action_ids", ""], ["if_number_bank", ""], ["if_property_ids", ""], ["max_speed", #<BigDecimal:101f808e8,'0.5E1',9(36)>], ["neighborhood_radius", #<BigDecimal:101f80758,'0.43E2',9(36)>], ["normal_speed", #<BigDecimal:101f80848,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:101f80118,'0.4169974670 122019E0',18(45)>], ["property_a_id", 1], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:101f8bea0,'0.8482155088 678955E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:101f80640,'0.3E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:101f80988,'0.2976568976 659235E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:101fa0df0,'0.8230789831 530648E0',18(45)>], ["cohesion_weight", #<BigDecimal:101fa1368,'0.1032948026 349256E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,0,1"], ["else_number_bank", "0.0756862491886813,,67"], ["else_property_ids", "0,10,4"], ["if_action_ids", ""], ["if_number_bank", ""], ["if_property_ids", ""], ["max_speed", #<BigDecimal:101fa1868,'0.2E1',9(36)>], ["neighborhood_radius", #<BigDecimal:101fa15c0,'0.92E2',9(36)>], ["normal_speed", #<BigDecimal:101fa1638,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:101fa1188,'0.4158493700 395444E0',18(45)>], ["property_a_id", 10], ["property_b_id", 3], ["rand_motion_probability", #<BigDecimal:101fa0fd0,'0.4327273231 374347E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:101fa1520,'0.68E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:101fa1930,'0.7213351010 997604E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:101fa8de8,'0.7970345405 287138E-1',18(45)>], ["cohesion_weight", #<BigDecimal:101fa9310,'0.1271622741 089583E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "1,1,0,2,0,2,0,0"], ["else_number_bank", ",0.8603085834526867,0.4961060386958792,0.2406483591627176,,,5,"], ["else_property_ids", "9,5,7,8,9,9,2,10"], ["if_action_ids", "1,0,2,2,0,1,1,0"], ["if_number_bank", ",0.0538163370392281,0.30583760250987657,14,0.08486165463276096,9,0.9025601819612603,0.050582922848184296"], ["if_property_ids", "9,0,5,4,6,2,7,0"], ["max_speed", #<BigDecimal:101fa9680,'0.9E1',9(36)>], ["neighborhood_radius", #<BigDecimal:101fa9590,'0.47E2',9(36)>], ["normal_speed", #<BigDecimal:101fa9608,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:101fa9158,'0.9177940960 587856E0',18(45)>], ["property_a_id", 9], ["property_b_id", 3], ["rand_motion_probability", #<BigDecimal:101fa8fa0,'0.3222342234 579296E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:101fa9518,'0.73E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:101fa96f8,'0.9792204862 342647E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1015ad370,'0.7857117968 284826E0',18(45)>], ["cohesion_weight", #<BigDecimal:1015ad938,'0.3932390367 747471E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,2,0"], ["else_number_bank", "0.20957188490704737,0.9558864569981786,0.0014935696956069888"], ["else_property_ids", "7,5,7"], ["if_action_ids", "2,1,2,0,0,2,0"], ["if_number_bank", "98,10,0.06032356684925283,26,0.05040192019342998,85,"], ["if_property_ids", "3,2,8,4,8,3,10"], ["max_speed", #<BigDecimal:1015adca8,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1015adbb8,'0.11E2',9(36)>], ["normal_speed", #<BigDecimal:1015adc30,'0.7E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1015ad780,'0.6514955486 390037E0',18(45)>], ["property_a_id", 7], ["property_b_id", 3], ["rand_motion_probability", #<BigDecimal:1015ad550,'0.6991659689 330548E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1015adb40,'0.1E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:1015add48,'0.2768299255 864848E-2',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:1015be328,'0.9524552364 239802E0',18(45)>], ["cohesion_weight", #<BigDecimal:1015be8a0,'0.4958125874 741548E-1',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "1,2,1,2,0,1,2"], ["else_number_bank", "20,0.6049297866100447,0.43679062131407886,,0.009920378805233132,3,0.33453490717022444"], ["else_property_ids", "3,5,5,10,0,2,8"], ["if_action_ids", "1,2"], ["if_number_bank", "8,"], ["if_property_ids", "1,10"], ["max_speed", #<BigDecimal:1015bebe8,'0.9E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1015beaf8,'0.6E2',9(36)>], ["normal_speed", #<BigDecimal:1015beb70,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1015be6c0,'0.9509148242 622998E0',18(45)>], ["property_a_id", 0], ["property_b_id", 10], ["rand_motion_probability", #<BigDecimal:1015be4e0,'0.2871568480 564791E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1015bea80,'0.78E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:1015bec60,'0.2640958195 2476E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1015cc0e0,'0.6328148721 414717E-1',18(45)>], ["cohesion_weight", #<BigDecimal:1015ccd38,'0.2110852093 528707E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,2,1,1,1,0,0,2,0"], ["else_number_bank", "0.4179791224753463,,66,0.1332878516369259,0.003309666189588312,0.7574145984259297,0.31939689429270907,,35,7"], ["else_property_ids", "6,10,4,6,0,7,8,10,3,4"], ["if_action_ids", "1,2,0,2"], ["if_number_bank", "50,,44,"], ["if_property_ids", "4,9,3,10"], ["max_speed", #<BigDecimal:1015cd288,'0.7E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1015cd0d0,'0.62E2',9(36)>], ["normal_speed", #<BigDecimal:1015cd1c0,'0.3E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1015cca68,'0.1631837622 42927E0',18(45)>], ["property_a_id", 10], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:1015cc5e0,'0.3551619833 636452E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1015cd008,'0.82E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["velocity_scale", #<BigDecimal:1015cd350,'0.3721291886 630643E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "password", "school", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["password", "1029rox*"], ["school", "Bowdoin"], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00], ["username", "ruben"]]
+  [1m[35mSQL (0.5ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 1  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 2[0m  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 3  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 4[0m  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 5  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 6[0m  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 7  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 8[0m  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 9  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 10[0m  [["user_id", 1], ["updated_at", Thu, 03 Jul 2014 02:28:32 UTC +00:00]]
+  [1m[35m (7.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 164ms (ActiveRecord: 19.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-07-02 21:28:32 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 13ms (Views: 9.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 21:28:33 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 21:30:09 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mSwarmBehavior Load (0.5ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered users/index.html.erb within layouts/application (15.0ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined method `content_id' for #<SwarmBehavior:0x00000101719358>):
+    19:         <td><%= user.username %></td>
+    20:         <td><%= user.password %></td>
+    21:         <td><%= user.school %></td>
+    22:         <td><%= user.swarm_behaviors.map do |item| item.content_id end %></td>
+    23:         <td><%= link_to 'Show', user %></td>
+    24:         <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    25:         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  app/views/users/index.html.erb:22:in `block (2 levels) in _app_views_users_index_html_erb__3908841383823889959_2202930980'
+  app/views/users/index.html.erb:22:in `block in _app_views_users_index_html_erb__3908841383823889959_2202930980'
+  app/views/users/index.html.erb:17:in `_app_views_users_index_html_erb__3908841383823889959_2202930980'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.1ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (25.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 21:30:09 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered users/index.html.erb within layouts/application (8.1ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `content_id' for #<SwarmBehavior:0x00000101799008>):
+    19:         <td><%= user.username %></td>
+    20:         <td><%= user.password %></td>
+    21:         <td><%= user.school %></td>
+    22:         <td><%= user.swarm_behaviors.map do |item| item.content_id end %></td>
+    23:         <td><%= link_to 'Show', user %></td>
+    24:         <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    25:         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  app/views/users/index.html.erb:22:in `block (2 levels) in _app_views_users_index_html_erb__3908841383823889959_2203243900'
+  app/views/users/index.html.erb:22:in `block in _app_views_users_index_html_erb__3908841383823889959_2203243900'
+  app/views/users/index.html.erb:17:in `_app_views_users_index_html_erb__3908841383823889959_2203243900'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 21:30:18 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered users/index.html.erb within layouts/application (43.2ms)
+Completed 200 OK in 49ms (Views: 47.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:19 -0500
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 16ms (Views: 15.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 21:30:27 -0500
+
+
+Started GET "/swarm_behaviors/1.json" for 127.0.0.1 at 2014-07-02 21:30:59 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSwarmBehavior Load (0.6ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered swarm_behaviors/show.json.jbuilder (6.0ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/1.json" for 127.0.0.1 at 2014-07-02 21:35:33 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mSwarmBehavior Load (0.6ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.5ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/2.json" for 127.0.0.1 at 2014-07-02 21:36:15 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.6ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/3.json" for 127.0.0.1 at 2014-07-02 21:36:21 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "3"]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/4.json" for 127.0.0.1 at 2014-07-02 21:36:25 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.8ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/5.json" for 127.0.0.1 at 2014-07-02 21:36:29 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "5"]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/6.json" for 127.0.0.1 at 2014-07-02 21:36:34 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.5ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/7.json" for 127.0.0.1 at 2014-07-02 21:36:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "7"]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/8.json" for 127.0.0.1 at 2014-07-02 21:36:44 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"8"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/1.json" for 127.0.0.1 at 2014-07-02 21:36:56 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.0ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[36mSwarmBehavior Load (0.9ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  Rendered swarm_behaviors/index.html.erb within layouts/application (52.6ms)
+Completed 200 OK in 63ms (Views: 58.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:45 -0500
+
+
+Started DELETE "/swarm_behaviors/1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"1"}
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?  [["id", 1]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 13ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.5ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:16:57 -0500
+
+
+Started DELETE "/swarm_behaviors/2" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"2"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?[0m  [["id", 2]]
+  [1m[35m (8.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 12ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  Rendered swarm_behaviors/index.html.erb within layouts/application (48.8ms)
+Completed 200 OK in 54ms (Views: 52.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:00 -0500
+
+
+Started DELETE "/swarm_behaviors/3" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"3"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "3"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?  [["id", 3]]
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 13ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:03 -0500
+
+
+Started DELETE "/swarm_behaviors/10" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"10"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "10"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?[0m  [["id", 10]]
+  [1m[35m (9.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 12ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  Rendered swarm_behaviors/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:07 -0500
+
+
+Started DELETE "/swarm_behaviors/9" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"9"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "9"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?  [["id", 9]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 5ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:10 -0500
+
+
+Started DELETE "/swarm_behaviors/8" for 127.0.0.1 at 2014-07-02 22:17:12 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"8"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "8"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?[0m  [["id", 8]]
+  [1m[35m (8.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 12ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:12 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  Rendered swarm_behaviors/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:12 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:12 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:12 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:12 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:13 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:13 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:13 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:13 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:13 -0500
+
+
+Started DELETE "/swarm_behaviors/7" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"7"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "7"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?  [["id", 7]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 7ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:15 -0500
+
+
+Started DELETE "/swarm_behaviors/6" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"6"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?[0m  [["id", 6]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 4ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  Rendered swarm_behaviors/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:17 -0500
+
+
+Started DELETE "/swarm_behaviors/5" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"5"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "5"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?  [["id", 5]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 4ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:19 -0500
+
+
+Started DELETE "/swarm_behaviors/4" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+Processing by SwarmBehaviorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"4"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ?[0m  [["id", 4]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/swarm_behaviors
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  Rendered swarm_behaviors/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:21 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered users/index.html.erb within layouts/application (44.7ms)
+Completed 200 OK in 55ms (Views: 48.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:26 -0500
+
+
+Started DELETE "/users/1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 1]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 14ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:29 -0500
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-07-02 22:17:30 -0500
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (4.0ms)
+  Rendered users/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g9LoNQ/1N84aAMT1DIrcQDyJyltRgyQngfw9cykrkn4=", "user"=>{"username"=>"Ruben", "password"=>"[FILTERED]", "school"=>"Bowdoin"}, "commit"=>"Create User"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:10684bb18,'0.1309707011 225866E0',18(45)>], ["cohesion_weight", #<BigDecimal:10684b960,'0.4614202491 31639E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "2,2,1"], ["else_number_bank", "4,9,0.9726314463026458"], ["else_property_ids", "2,2,6"], ["if_action_ids", "2,2,0,2,2,0,0,2"], ["if_number_bank", "0.09063546377734584,4,0.7652355767447138,0.0028177213704222437,3,2,0.7357556609224203,9"], ["if_property_ids", "0,1,6,5,1,2,5,2"], ["max_speed", #<BigDecimal:1068401a0,'0.8E1',9(36)>], ["neighborhood_radius", #<BigDecimal:106848fd0,'0.33E2',9(36)>], ["normal_speed", #<BigDecimal:1068400d8,'0.7E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10684bd70,'0.3917072364 166415E0',18(45)>], ["property_a_id", 6], ["property_b_id", 5], ["rand_motion_probability", #<BigDecimal:10684be88,'0.3779000660 055529E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:106849548,'0.73E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:106840218,'0.3531247003 329374E-2',18(45)>]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:10685a960,'0.6455415695 931918E0',18(45)>], ["cohesion_weight", #<BigDecimal:10685afc8,'0.1700830059 871706E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "1"], ["else_number_bank", "0.08845218188816308"], ["else_property_ids", "0"], ["if_action_ids", "0,2,1"], ["if_number_bank", "81,0.41298996352788275,0.9613987141213606"], ["if_property_ids", "3,7,6"], ["max_speed", #<BigDecimal:10685b2e8,'0.4E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10685b1f8,'0.1E3',9(36)>], ["normal_speed", #<BigDecimal:10685b270,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10685ad98,'0.5392100470 966628E0',18(45)>], ["property_a_id", 0], ["property_b_id", 0], ["rand_motion_probability", #<BigDecimal:10685ab18,'0.2802396102 34681E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:10685b180,'0.9E2',9(36)>], ["subbehavior_ids", 11], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:10685b360,'0.4754837075 768292E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:106870d00,'0.2993704499 59719E0',18(45)>], ["cohesion_weight", #<BigDecimal:106871278,'0.7264591138 331755E0',18(45)>], ["comparator_id", 0], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,0,2,0"], ["else_number_bank", "0.03993031867143759,0.4865179978241747,0.934742383284853,58"], ["else_property_ids", "5,6,5,4"], ["if_action_ids", ""], ["if_number_bank", ""], ["if_property_ids", ""], ["max_speed", #<BigDecimal:106871688,'0.4E1',9(36)>], ["neighborhood_radius", #<BigDecimal:106871548,'0.2E2',9(36)>], ["normal_speed", #<BigDecimal:106871610,'0.4E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1068710c0,'0.5313566338 362452E0',18(45)>], ["property_a_id", 4], ["property_b_id", 5], ["rand_motion_probability", #<BigDecimal:106870f08,'0.3502126645 613858E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1068714d0,'0.95E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:106871750,'0.2466113847 912592E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:10161a088,'0.2760738519 075315E0',18(45)>], ["cohesion_weight", #<BigDecimal:10161a5b0,'0.6771469120 66493E-1',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "2,2"], ["else_number_bank", "69,49"], ["else_property_ids", "3,3"], ["if_action_ids", ""], ["if_number_bank", ""], ["if_property_ids", ""], ["max_speed", #<BigDecimal:10161a9c0,'0.9E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10161a8d0,'0.5E2',9(36)>], ["normal_speed", #<BigDecimal:10161a948,'0.8E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10161a3f8,'0.4817980505 024588E-1',18(45)>], ["property_a_id", 2], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:10161a240,'0.4401595697 769199E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:10161a858,'0.87E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:10161aa60,'0.7481426571 367297E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:106889f30,'0.9117707069 704917E0',18(45)>], ["cohesion_weight", #<BigDecimal:10688a598,'0.7795614554 367414E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,0,2,2,0,1"], ["else_number_bank", "0.062483890750768635,36,0.7367332859073303,0.7014182847208249,0.7179985408951061,69"], ["else_property_ids", "0,4,6,5,6,4"], ["if_action_ids", "0,1,1,1,2,2,0"], ["if_number_bank", "0.07925445902160821,0.05583932104795405,0.21262002746263298,6,0.13766758658501033,0.47584357430914626,3"], ["if_property_ids", "6,0,5,1,7,6,2"], ["max_speed", #<BigDecimal:10688a9a8,'0.5E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10688a868,'0.76E2',9(36)>], ["normal_speed", #<BigDecimal:10688a930,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10688a2f0,'0.8967331740 530926E-1',18(45)>], ["property_a_id", 8], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:10688a110,'0.1297614682 146505E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:10688a7f0,'0.68E2',9(36)>], ["subbehavior_ids", 14], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:10688aa20,'0.3164691132 2611E-2',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:1068ab770,'0.3914575549 44266E0',18(45)>], ["cohesion_weight", #<BigDecimal:1068abd60,'0.1321943403 854799E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "0,0,0,0"], ["else_number_bank", "18,0.08199326497032505,2,4"], ["else_property_ids", "3,0,2,1"], ["if_action_ids", "0"], ["if_number_bank", "0.47858681104743883"], ["if_property_ids", "6"], ["max_speed", #<BigDecimal:1068a9588,'0.8E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1068a98a8,'0.71E2',9(36)>], ["normal_speed", #<BigDecimal:1068a9628,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1068abb30,'0.2343386286 639446E0',18(45)>], ["property_a_id", 1], ["property_b_id", 0], ["rand_motion_probability", #<BigDecimal:1068ab950,'0.4311345275 224281E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1068aa938,'0.3E1',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1068a9498,'0.2731083249 097548E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1068cac60,'0.4975575872 939092E0',18(45)>], ["cohesion_weight", #<BigDecimal:1068cb318,'0.3741125910 777932E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,1,1"], ["else_number_bank", "0.4308880378815142,0.12123539803448546,0.009163489126253987"], ["else_property_ids", "6,8,0"], ["if_action_ids", "0,2,2,1,0,0,1,0"], ["if_number_bank", "0.9416841583880173,0.792641381341511,0.3811106066941943,0.0086959662675116,2,0.8721316795522752,0.26630478642393407,0.4728524526392013"], ["if_property_ids", "7,5,7,0,1,5,7,7"], ["max_speed", #<BigDecimal:1068cb728,'0.5E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1068cb610,'0.33E2',9(36)>], ["normal_speed", #<BigDecimal:1068cb6b0,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1068cb098,'0.3666814447 70619E-1',18(45)>], ["property_a_id", 4], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:1068cae90,'0.2220938341 018736E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1068cb598,'0.86E2',9(36)>], ["subbehavior_ids", 16], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1068cb7a0,'0.5588463350 35475E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:1068eada8,'0.5904388236 388303E0',18(45)>], ["cohesion_weight", #<BigDecimal:1068eb320,'0.2787651696 363173E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 2], ["else_action_ids", "0,1,1"], ["else_number_bank", "0.47227708244841093,0.11700926024433411,24"], ["else_property_ids", "8,6,4"], ["if_action_ids", "2"], ["if_number_bank", "6"], ["if_property_ids", "2"], ["max_speed", #<BigDecimal:1068eb780,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1068eb640,'0.63E2',9(36)>], ["normal_speed", #<BigDecimal:1068eb708,'0.6E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1068eb118,'0.7427458268 061673E0',18(45)>], ["property_a_id", 4], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:1068eaf60,'0.2139026613 679645E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1068eb5c8,'0.46E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1068eb7f8,'0.5273193126 568632E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:101644090,'0.1958449958 000386E0',18(45)>], ["cohesion_weight", #<BigDecimal:101644630,'0.8688934714 543992E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "0,0,2,2,2,2,1"], ["else_number_bank", "42,0.028741667360867952,41,10,0.9779276226940316,0.02873500082434325,0.9144016193944519"], ["else_property_ids", "3,0,3,1,7,0,7"], ["if_action_ids", "2,0"], ["if_number_bank", "0.18219846394203043,0.5887773939234386"], ["if_property_ids", "8,7"], ["max_speed", #<BigDecimal:101644978,'0.3E1',9(36)>], ["neighborhood_radius", #<BigDecimal:101644860,'0.38E2',9(36)>], ["normal_speed", #<BigDecimal:1016448d8,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:101644478,'0.1336689563 371856E0',18(45)>], ["property_a_id", 0], ["property_b_id", 4], ["rand_motion_probability", #<BigDecimal:101644298,'0.4889605164 508774E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1016447e8,'0.2E1',9(36)>], ["subbehavior_ids", 18], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1016449f0,'0.1926911862 989012E-1',18(45)>]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:102098f28,'0.9705101021 651237E0',18(45)>], ["cohesion_weight", #<BigDecimal:1020994f0,'0.7867419185 326341E-1',18(45)>], ["comparator_id", 0], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "1,0,2,0,0,1,2,2"], ["else_number_bank", "0.011109226672668938,0.23068298114866775,11,0.7315729722451558,0.057245827576521635,6,48,0.09620784755594558"], ["else_property_ids", "0,8,3,6,7,2,4,6"], ["if_action_ids", "0,2,0,2,0,1,2"], ["if_number_bank", "48,2,0.7118028907874476,0.8609068632384714,7,10,0.17503799296745393"], ["if_property_ids", "4,2,7,7,1,1,6"], ["max_speed", #<BigDecimal:102099838,'0.8E1',9(36)>], ["neighborhood_radius", #<BigDecimal:102099748,'0.51E2',9(36)>], ["normal_speed", #<BigDecimal:1020997c0,'0.7E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:102099298,'0.2030713926 812784E0',18(45)>], ["property_a_id", 0], ["property_b_id", 8], ["rand_motion_probability", #<BigDecimal:1020990e0,'0.3846967961 296417E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1020996a8,'0.11E2',9(36)>], ["subbehavior_ids", 19], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1020998d8,'0.8153408006 576761E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:106922e10,'0.3099866681 153663E0',18(45)>], ["cohesion_weight", #<BigDecimal:1069234a0,'0.1835395504 474929E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,2,1,2,1,1,2,1"], ["else_number_bank", "0.045566748207177765,0.06373276502576711,0.1556819657420686,0.5938809981865897,0.0980760508491324,44,0.06375603962557685,0.7286491096753551"], ["else_property_ids", "5,0,7,7,5,4,6,5"], ["if_action_ids", "2,1,1,1,2"], ["if_number_bank", "0.04001281490166941,47,0.8243133278630282,0.2907768973707411,5"], ["if_property_ids", "0,3,5,6,1"], ["max_speed", #<BigDecimal:1069237c0,'0.9E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1069236d0,'0.43E2',9(36)>], ["normal_speed", #<BigDecimal:106923748,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1069231f8,'0.5395047760 522693E0',18(45)>], ["property_a_id", 0], ["property_b_id", 2], ["rand_motion_probability", #<BigDecimal:106922fc8,'0.1523988272 73269E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:106923658,'0.84E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:106923838,'0.6425655118 454297E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:10167a780,'0.9461834184 855541E0',18(45)>], ["cohesion_weight", #<BigDecimal:10167aca8,'0.9781627908 590163E-1',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "2,2,2"], ["else_number_bank", "84,41,0.41675762703265984"], ["else_property_ids", "3,3,7"], ["if_action_ids", "0,2,1,0,1,1"], ["if_number_bank", "0.4673970321070791,0.05614359438208083,10,9,0.9987537811068907,0.4310690426003018"], ["if_property_ids", "8,5,2,2,5,8"], ["max_speed", #<BigDecimal:10167afc8,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10167aed8,'0.62E2',9(36)>], ["normal_speed", #<BigDecimal:10167af50,'0.8E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10167aaf0,'0.2734934675 47553E0',18(45)>], ["property_a_id", 8], ["property_b_id", 0], ["rand_motion_probability", #<BigDecimal:10167a938,'0.3689296270 110853E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:10167ae60,'0.51E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:10167b040,'0.4098527162 545632E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:10168bdc8,'0.8003798834 137246E0',18(45)>], ["cohesion_weight", #<BigDecimal:101689fa0,'0.1836669848 896706E0',18(45)>], ["comparator_id", 0], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "1"], ["else_number_bank", "61"], ["else_property_ids", "4"], ["if_action_ids", "2,1,2"], ["if_number_bank", "49,5,82"], ["if_property_ids", "3,1,3"], ["max_speed", #<BigDecimal:101680068,'0.4E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1016887e0,'0.12E2',9(36)>], ["normal_speed", #<BigDecimal:101688538,'0.8E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10168a9c8,'0.4911109341 460919E0',18(45)>], ["property_a_id", 1], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:10168bf80,'0.4875043034 282697E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1016889e8,'0.79E2',9(36)>], ["subbehavior_ids", 22], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1016800e0,'0.6766947169 401247E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:1030b2328,'0.8354261986 293025E0',18(45)>], ["cohesion_weight", #<BigDecimal:1030b2878,'0.1882465698 57355E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "1,2,0,0,1,0,0,1"], ["else_number_bank", "0.07490887914169006,4,0.4187804519544935,0.32260832653766425,33,0.07602449814135329,0.13356340451160675,0.519428221320845"], ["else_property_ids", "0,1,8,7,3,0,5,6"], ["if_action_ids", "2,0,1,2,0,1"], ["if_number_bank", "0.9513646478945552,10,10,9,46,0.30797486316711026"], ["if_property_ids", "7,2,2,2,4,8"], ["max_speed", #<BigDecimal:1030b2c38,'0.5E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1030b2af8,'0.87E2',9(36)>], ["normal_speed", #<BigDecimal:1030b2b70,'0.3E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1030b2698,'0.3135110792 206057E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:1030b24e0,'0.3559448965 551719E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1030b2a80,'0.5E1',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1030b2cb0,'0.3922140355 575658E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:101693500,'0.6229214378 03049E-1',18(45)>], ["cohesion_weight", #<BigDecimal:101693a28,'0.9421083639 378827E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,0"], ["else_number_bank", "0.038092420346597045,0.5657823921492018"], ["else_property_ids", "8,7"], ["if_action_ids", "1,1"], ["if_number_bank", "0.0497496434434857,0.1432166605447851"], ["if_property_ids", "0,6"], ["max_speed", #<BigDecimal:101693d48,'0.4E1',9(36)>], ["neighborhood_radius", #<BigDecimal:101693c58,'0.68E2',9(36)>], ["normal_speed", #<BigDecimal:101693cd0,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:101693870,'0.2566457984 842134E0',18(45)>], ["property_a_id", 7], ["property_b_id", 8], ["rand_motion_probability", #<BigDecimal:1016936b8,'0.1570049607 377211E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:101693be0,'0.18E2',9(36)>], ["subbehavior_ids", 24], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:101693dc0,'0.2337400043 745387E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:1030c23b8,'0.6648505587 827113E0',18(45)>], ["cohesion_weight", #<BigDecimal:1030c29a8,'0.8032487408 336711E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "2,1,1,0,1,2,1,1"], ["else_number_bank", "0.6475793841017783,0.48877435667536173,95,5,40,26,0.030920863181594926,0.351040193047915"], ["else_property_ids", "6,7,3,1,3,4,5,8"], ["if_action_ids", "2,1,1,1,1,1,2,1"], ["if_number_bank", "0.20827853778026317,8,66,0.023328540660346953,6,0.6952716613842067,0.11875923514953912,0.0336104453398674"], ["if_property_ids", "5,1,3,8,1,7,7,8"], ["max_speed", #<BigDecimal:1030c2cf0,'0.7E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1030c2bd8,'0.55E2',9(36)>], ["normal_speed", #<BigDecimal:1030c2c78,'0.5E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1030c27c8,'0.4591264048 794214E0',18(45)>], ["property_a_id", 0], ["property_b_id", 4], ["rand_motion_probability", #<BigDecimal:1030c25c0,'0.4458826129 578525E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1030c2b60,'0.9E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1030c2d90,'0.8121983241 916864E-2',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1016ab448,'0.5741792835 195014E-1',18(45)>], ["cohesion_weight", #<BigDecimal:1016abad8,'0.5799082055 171274E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,1,2,0,0,2"], ["else_number_bank", "15,0.08790111548810309,0.7581708574350682,0.02698372545528831,0.07575923974809107,11"], ["else_property_ids", "3,0,6,0,7,4"], ["if_action_ids", "2"], ["if_number_bank", "5"], ["if_property_ids", "2"], ["max_speed", #<BigDecimal:1016abdf8,'0.1E2',9(36)>], ["neighborhood_radius", #<BigDecimal:1016abd08,'0.43E2',9(36)>], ["normal_speed", #<BigDecimal:1016abd80,'0.7E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1016ab920,'0.5963813189 617182E0',18(45)>], ["property_a_id", 8], ["property_b_id", 4], ["rand_motion_probability", #<BigDecimal:1016ab6a0,'0.3542791593 765954E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1016abc90,'0.4E1',9(36)>], ["subbehavior_ids", 26], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1016abe98,'0.5298731489 616763E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:106948cf0,'0.4454645124 472911E-1',18(45)>], ["cohesion_weight", #<BigDecimal:106949268,'0.2570514293 483565E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 3], ["else_action_ids", "2"], ["else_number_bank", "2"], ["else_property_ids", "4"], ["if_action_ids", "0,0"], ["if_number_bank", "0.464508264198776,0.8883182019306674"], ["if_property_ids", "5,5"], ["max_speed", #<BigDecimal:1069495b0,'0.9E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1069494c0,'0.83E2',9(36)>], ["normal_speed", #<BigDecimal:106949538,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1069490b0,'0.2709738831 274565E0',18(45)>], ["property_a_id", 0], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:106948ef8,'0.1043125525 762038E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:106949448,'0.49E2',9(36)>], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:106949628,'0.2713520105 341277E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1016c9088,'0.9955269531 873199E0',18(45)>], ["cohesion_weight", #<BigDecimal:1016c97e0,'0.6937655546 523179E0',18(45)>], ["comparator_id", 2], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 2], ["else_action_ids", "0,2,2,0,2,2,0,2"], ["else_number_bank", "0.17820580897967786,0.1292979649985211,0.2967096993699492,0.014497851008123064,0.09020165251999296,0.12244708265537319,0.7043987341621927,0.8304610524608562"], ["else_property_ids", "5,6,5,7,8,8,7,5"], ["if_action_ids", "1"], ["if_number_bank", "96"], ["if_property_ids", "4"], ["max_speed", #<BigDecimal:1016c9c18,'0.2E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1016c9b28,'0.96E2',9(36)>], ["normal_speed", #<BigDecimal:1016c9ba0,'0.5E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1016c9628,'0.1764233921 739522E0',18(45)>], ["property_a_id", 7], ["property_b_id", 0], ["rand_motion_probability", #<BigDecimal:1016c9448,'0.7187126770 082908E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1016c9a88,'0.72E2',9(36)>], ["subbehavior_ids", 28], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1016c9c90,'0.8581508958 574456E-1',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:106959f00,'0.7988159362 649235E0',18(45)>], ["cohesion_weight", #<BigDecimal:10695a428,'0.4442380897 661701E0',18(45)>], ["comparator_id", 1], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 1], ["else_action_ids", "0,0,0"], ["else_number_bank", "0.24264745974201452,37,23"], ["else_property_ids", "7,4,4"], ["if_action_ids", "2"], ["if_number_bank", "0.7321278264356434"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:10695a748,'0.9E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10695a658,'0.93E2',9(36)>], ["normal_speed", #<BigDecimal:10695a6d0,'0.7E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10695a270,'0.3479881293 357266E0',18(45)>], ["property_a_id", 3], ["property_b_id", 5], ["rand_motion_probability", #<BigDecimal:10695a0b8,'0.8949080253 362302E-1',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:10695a5e0,'0.97E2',9(36)>], ["subbehavior_ids", 29], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:10695a7c0,'0.3801594145 693392E-1',18(45)>]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "separation_weight", "subbehavior_ids", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1016daf90,'0.5308784835 923963E0',18(45)>], ["cohesion_weight", #<BigDecimal:1016db508,'0.2394621834 401175E0',18(45)>], ["comparator_id", 0], ["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,0,0"], ["else_number_bank", "0.6684288329896811,0.017850534966700006,0.5985537319898184"], ["else_property_ids", "5,0,5"], ["if_action_ids", "1,1,1,1,2,0,2"], ["if_number_bank", "7,20,5,0.3219573962444066,0.7511237297997266,0.2665407080511077,0.6760783499011128"], ["if_property_ids", "1,4,1,8,6,8,6"], ["max_speed", #<BigDecimal:1016db878,'0.3E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1016db788,'0.17E2',9(36)>], ["normal_speed", #<BigDecimal:1016db800,'0.3E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1016db350,'0.9432878522 511404E0',18(45)>], ["property_a_id", 3], ["property_b_id", 2], ["rand_motion_probability", #<BigDecimal:1016db198,'0.1851993900 970058E0',18(45)>], ["random_property_b", false], ["separation_weight", #<BigDecimal:1016db710,'0.67E2',9(36)>], ["subbehavior_ids", 30], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["velocity_scale", #<BigDecimal:1016db8f0,'0.5674104229 358967E-2',18(45)>]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "password", "school", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["password", "Martinez"], ["school", "Bowdoin"], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00], ["username", "Ruben"]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 12  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 13[0m  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 15  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 17[0m  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 20  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 21[0m  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 23  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 25[0m  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 27  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 31[0m  [["user_id", 2], ["updated_at", Thu, 03 Jul 2014 03:17:37 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 63ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:37 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-07-02 22:17:38 -0500
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered users/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/swarm_behaviors" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 17ms (Views: 16.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 22:17:54 -0500
+
+
+Started GET "/swarm_behaviors/1.json" for 127.0.0.1 at 2014-07-02 22:18:46 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find SwarmBehavior with id=1):
+  app/controllers/swarm_behaviors_controller.rb:67:in `set_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (64.5ms)
+
+
+Started GET "/swarm_behaviors/11.json" for 127.0.0.1 at 2014-07-02 22:18:58 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"11"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "11"]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.8ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.1ms)
+  [1m[36mSwarmBehavior Load (2.6ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."comparator_id" = 0 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."comparator_id" = 0 LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AddAlignmentWeightToSwarmBehavior (20140703011742)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  CREATE TEMPORARY TABLE "aswarm_behaviors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comparator_id" integer, "property_a_id" integer, "property_b_id" integer, "random_property_b" boolean, "depth_level" integer, "if_property_ids" varchar(255), "if_action_ids" varchar(255), "else_property_ids" varchar(255), "else_action_ids" varchar(255), "if_number_bank" varchar(255), "else_number_bank" varchar(255), "subbehavior_ids" varchar(255), "created_at" datetime, "updated_at" datetime, "velocity_scale" decimal, "max_speed" decimal, "normal_speed" decimal, "neighborhood_radius" decimal, "separation_weight" decimal, "cohesion_weight" decimal, "pacekeeping_weight" decimal, "rand_motion_probability" decimal, "alignment_weight" decimal) 
+  [1m[36m (0.3ms)[0m  [1mSELECT * FROM "swarm_behaviors"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (11, NULL, 1, 6, 5, 'f', 1, '0,1,6,5,1,2,5,2', '2,2,0,2,2,0,0,2', '2,2,6', '2,2,1', '0.09063546377734584,4,0.7652355767447138,0.0028177213704222437,3,2,0.7357556609224203,9', '4,9,0.9726314463026458', NULL, '2014-07-03 03:17:37.082022', '2014-07-03 03:17:37.082022', 0.003531247003329374, 8, 7, 33, 73, 0.461420249131639, 0.3917072364166415, 0.3779000660055529, 0.1309707011225866)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (12, 2, 2, 0, 0, 'f', 0, '3,7,6', '0,2,1', '0', '1', '81,0.41298996352788275,0.9613987141213606', '0.08845218188816308', '11', '2014-07-03 03:17:37.079773', '2014-07-03 03:17:37.125827', 0.04754837075768292, 4, 2, 100, 90, 0.1700830059871706, 0.5392100470966628, 0.280239610234681, 0.6455415695931918)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (13, 2, 0, 4, 5, 'f', 0, '', '', '5,6,5,4', '0,0,2,0', '', '0.03993031867143759,0.4865179978241747,0.934742383284853,58', NULL, '2014-07-03 03:17:37.089625', '2014-07-03 03:17:37.127157', 0.02466113847912592, 4, 4, 20, 95, 0.7264591138331755, 0.5313566338362452, 0.3502126645613858, 0.299370449959719)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (14, NULL, 1, 2, 6, 'f', 1, '', '', '3,3', '2,2', '', '69,49', NULL, '2014-07-03 03:17:37.092201', '2014-07-03 03:17:37.092201', 0.07481426571367297, 9, 8, 50, 87, 0.0677146912066493, 0.04817980505024588, 0.4401595697769199, 0.2760738519075315)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (15, 2, 1, 8, 6, 'f', 0, '6,0,5,1,7,6,2', '0,1,1,1,2,2,0', '0,4,6,5,6,4', '2,0,2,2,0,1', '0.07925445902160821,0.05583932104795405,0.21262002746263298,6,0.13766758658501033,0.47584357430914626,3', '0.062483890750768635,36,0.7367332859073303,0.7014182847208249,0.7179985408951061,69', '14', '2014-07-03 03:17:37.091544', '2014-07-03 03:17:37.127990', 0.0031646911322611, 5, 9, 76, 68, 0.7795614554367414, 0.08967331740530926, 0.1297614682146505, 0.9117707069704917)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (16, NULL, 2, 1, 0, 'f', 1, '6', '0', '3,0,2,1', '0,0,0,0', '0.47858681104743883', '18,0.08199326497032505,2,4', NULL, '2014-07-03 03:17:37.096154', '2014-07-03 03:17:37.096154', 0.02731083249097548, 8, 9, 71, 3, 0.1321943403854799, 0.2343386286639446, 0.4311345275224281, 0.391457554944266)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (17, 2, 2, 4, 6, 'f', 0, '7,5,7,0,1,5,7,7', '0,2,2,1,0,0,1,0', '6,8,0', '0,1,1', '0.9416841583880173,0.792641381341511,0.3811106066941943,0.0086959662675116,2,0.8721316795522752,0.26630478642393407,0.4728524526392013', '0.4308880378815142,0.12123539803448546,0.009163489126253987', '16', '2014-07-03 03:17:37.095397', '2014-07-03 03:17:37.128530', 0.0558846335035475, 5, 9, 33, 86, 0.3741125910777932, 0.0366681444770619, 0.02220938341018736, 0.4975575872939092)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (18, NULL, 2, 4, 6, 'f', 2, '2', '2', '8,6,4', '0,1,1', '6', '0.47227708244841093,0.11700926024433411,24', NULL, '2014-07-03 03:17:37.100808', '2014-07-03 03:17:37.100808', 0.05273193126568632, 6, 6, 63, 46, 0.2787651696363173, 0.7427458268061673, 0.02139026613679645, 0.5904388236388303)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (19, NULL, 2, 0, 4, 'f', 1, '8,7', '2,0', '3,0,3,1,7,0,7', '0,0,2,2,2,2,1', '0.18219846394203043,0.5887773939234386', '42,0.028741667360867952,41,10,0.9779276226940316,0.02873500082434325,0.9144016193944519', '18', '2014-07-03 03:17:37.100291', '2014-07-03 03:17:37.100291', 0.01926911862989012, 3, 9, 38, 2, 0.8688934714543992, 0.1336689563371856, 0.4889605164508774, 0.1958449958000386)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (20, 2, 0, 0, 8, 'f', 0, '4,2,7,7,1,1,6', '0,2,0,2,0,1,2', '0,8,3,6,7,2,4,6', '1,0,2,0,0,1,2,2', '48,2,0.7118028907874476,0.8609068632384714,7,10,0.17503799296745393', '0.011109226672668938,0.23068298114866775,11,0.7315729722451558,0.057245827576521635,6,48,0.09620784755594558', '19', '2014-07-03 03:17:37.099590', '2014-07-03 03:17:37.129054', 0.08153408006576761, 8, 7, 51, 11, 0.07867419185326341, 0.2030713926812784, 0.3846967961296417, 0.9705101021651237)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (21, 2, 1, 0, 2, 'f', 0, '0,3,5,6,1', '2,1,1,1,2', '5,0,7,7,5,4,6,5', '0,2,1,2,1,1,2,1', '0.04001281490166941,47,0.8243133278630282,0.2907768973707411,5', '0.045566748207177765,0.06373276502576711,0.1556819657420686,0.5938809981865897,0.0980760508491324,44,0.06375603962557685,0.7286491096753551', NULL, '2014-07-03 03:17:37.106659', '2014-07-03 03:17:37.129574', 0.06425655118454297, 9, 9, 43, 84, 0.1835395504474929, 0.5395047760522693, 0.0152398827273269, 0.3099866681153663)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (22, NULL, 1, 8, 0, 'f', 1, '8,5,2,2,5,8', '0,2,1,0,1,1', '3,3,7', '2,2,2', '0.4673970321070791,0.05614359438208083,10,9,0.9987537811068907,0.4310690426003018', '84,41,0.41675762703265984', NULL, '2014-07-03 03:17:37.109314', '2014-07-03 03:17:37.109314', 0.04098527162545632, 6, 8, 62, 51, 0.09781627908590163, 0.273493467547553, 0.3689296270110853, 0.9461834184855541)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (23, 2, 0, 1, 6, 'f', 0, '3,1,3', '2,1,2', '4', '1', '49,5,82', '61', '22', '2014-07-03 03:17:37.108757', '2014-07-03 03:17:37.130098', 0.06766947169401247, 4, 8, 12, 79, 0.1836669848896706, 0.4911109341460919, 0.4875043034282697, 0.8003798834137246)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (24, NULL, 1, 5, 1, 'f', 1, '7,2,2,2,4,8', '2,0,1,2,0,1', '0,1,8,7,3,0,5,6', '1,2,0,0,1,0,0,1', '0.9513646478945552,10,10,9,46,0.30797486316711026', '0.07490887914169006,4,0.4187804519544935,0.32260832653766425,33,0.07602449814135329,0.13356340451160675,0.519428221320845', NULL, '2014-07-03 03:17:37.112575', '2014-07-03 03:17:37.112575', 0.03922140355575658, 5, 3, 87, 5, 0.188246569857355, 0.3135110792206057, 0.3559448965551719, 0.8354261986293025)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (25, 2, 1, 7, 8, 'f', 0, '0,6', '1,1', '8,7', '0,0', '0.0497496434434857,0.1432166605447851', '0.038092420346597045,0.5657823921492018', '24', '2014-07-03 03:17:37.112125', '2014-07-03 03:17:37.130618', 0.02337400043745387, 4, 9, 68, 18, 0.9421083639378827, 0.2566457984842134, 0.1570049607377211, 0.0622921437803049)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (26, NULL, 1, 0, 4, 'f', 1, '5,1,3,8,1,7,7,8', '2,1,1,1,1,1,2,1', '6,7,3,1,3,4,5,8', '2,1,1,0,1,2,1,1', '0.20827853778026317,8,66,0.023328540660346953,6,0.6952716613842067,0.11875923514953912,0.0336104453398674', '0.6475793841017783,0.48877435667536173,95,5,40,26,0.030920863181594926,0.351040193047915', NULL, '2014-07-03 03:17:37.115552', '2014-07-03 03:17:37.115552', 0.008121983241916864, 7, 5, 55, 90, 0.8032487408336711, 0.4591264048794214, 0.4458826129578525, 0.6648505587827113)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (27, 2, 1, 8, 4, 'f', 0, '2', '2', '3,0,6,0,7,4', '2,1,2,0,0,2', '5', '15,0.08790111548810309,0.7581708574350682,0.02698372545528831,0.07575923974809107,11', '26', '2014-07-03 03:17:37.115026', '2014-07-03 03:17:37.131132', 0.05298731489616763, 10, 7, 43, 4, 0.5799082055171274, 0.5963813189617182, 0.3542791593765954, 0.05741792835195014)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (28, NULL, 1, 0, 1, 'f', 3, '5,5', '0,0', '4', '2', '0.464508264198776,0.8883182019306674', '2', NULL, '2014-07-03 03:17:37.119614', '2014-07-03 03:17:37.119614', 0.02713520105341277, 9, 9, 83, 49, 0.2570514293483565, 0.2709738831274565, 0.1043125525762038, 0.04454645124472911)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (29, NULL, 2, 7, 0, 'f', 2, '4', '1', '5,6,5,7,8,8,7,5', '0,2,2,0,2,2,0,2', '96', '0.17820580897967786,0.1292979649985211,0.2967096993699492,0.014497851008123064,0.09020165251999296,0.12244708265537319,0.7043987341621927,0.8304610524608562', '28', '2014-07-03 03:17:37.119194', '2014-07-03 03:17:37.119194', 0.08581508958574456, 2, 5, 96, 72, 0.6937655546523179, 0.1764233921739522, 0.07187126770082908, 0.9955269531873199)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (30, NULL, 1, 3, 5, 'f', 1, '7', '2', '7,4,4', '0,0,0', '0.7321278264356434', '0.24264745974201452,37,23', '29', '2014-07-03 03:17:37.118762', '2014-07-03 03:17:37.118762', 0.03801594145693392, 9, 7, 93, 97, 0.4442380897661701, 0.3479881293357266, 0.08949080253362302, 0.7988159362649235)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aswarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability","alignment_weight") VALUES (31, 2, 0, 3, 2, 'f', 0, '1,4,1,8,6,8,6', '1,1,1,1,2,0,2', '5,0,5', '0,0,0', '7,20,5,0.3219573962444066,0.7511237297997266,0.2665407080511077,0.6760783499011128', '0.6684288329896811,0.017850534966700006,0.5985537319898184', '30', '2014-07-03 03:17:37.118282', '2014-07-03 03:17:37.131643', 0.005674104229358967, 3, 3, 17, 67, 0.2394621834401175, 0.9432878522511404, 0.1851993900970058, 0.5308784835923963)
+  [1m[36m (1.4ms)[0m  [1mDROP TABLE "swarm_behaviors"[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "swarm_behaviors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comparator_id" integer, "property_a_id" integer, "property_b_id" integer, "random_property_b" boolean, "depth_level" integer, "if_property_ids" varchar(255), "if_action_ids" varchar(255), "else_property_ids" varchar(255), "else_action_ids" varchar(255), "if_number_bank" varchar(255), "else_number_bank" varchar(255), "subbehavior_ids" varchar(255), "created_at" datetime, "updated_at" datetime, "velocity_scale" decimal, "max_speed" decimal, "normal_speed" decimal, "neighborhood_radius" decimal, "separation_weight" decimal, "cohesion_weight" decimal, "pacekeeping_weight" decimal, "rand_motion_probability" decimal) 
+  [1m[36m (0.3ms)[0m  [1mSELECT * FROM "aswarm_behaviors"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (11, NULL, 1, 6, 5, 'f', 1, '0,1,6,5,1,2,5,2', '2,2,0,2,2,0,0,2', '2,2,6', '2,2,1', '0.09063546377734584,4,0.7652355767447138,0.0028177213704222437,3,2,0.7357556609224203,9', '4,9,0.9726314463026458', NULL, '2014-07-03 03:17:37.082022', '2014-07-03 03:17:37.082022', 0.003531247003329374, 8, 7, 33, 73, 0.461420249131639, 0.3917072364166415, 0.3779000660055529)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (12, 2, 2, 0, 0, 'f', 0, '3,7,6', '0,2,1', '0', '1', '81,0.41298996352788275,0.9613987141213606', '0.08845218188816308', '11', '2014-07-03 03:17:37.079773', '2014-07-03 03:17:37.125827', 0.04754837075768292, 4, 2, 100, 90, 0.1700830059871706, 0.5392100470966628, 0.280239610234681)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (13, 2, 0, 4, 5, 'f', 0, '', '', '5,6,5,4', '0,0,2,0', '', '0.03993031867143759,0.4865179978241747,0.934742383284853,58', NULL, '2014-07-03 03:17:37.089625', '2014-07-03 03:17:37.127157', 0.02466113847912592, 4, 4, 20, 95, 0.7264591138331755, 0.5313566338362452, 0.3502126645613858)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (14, NULL, 1, 2, 6, 'f', 1, '', '', '3,3', '2,2', '', '69,49', NULL, '2014-07-03 03:17:37.092201', '2014-07-03 03:17:37.092201', 0.07481426571367297, 9, 8, 50, 87, 0.0677146912066493, 0.04817980505024588, 0.4401595697769199)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (15, 2, 1, 8, 6, 'f', 0, '6,0,5,1,7,6,2', '0,1,1,1,2,2,0', '0,4,6,5,6,4', '2,0,2,2,0,1', '0.07925445902160821,0.05583932104795405,0.21262002746263298,6,0.13766758658501033,0.47584357430914626,3', '0.062483890750768635,36,0.7367332859073303,0.7014182847208249,0.7179985408951061,69', '14', '2014-07-03 03:17:37.091544', '2014-07-03 03:17:37.127990', 0.0031646911322611, 5, 9, 76, 68, 0.7795614554367414, 0.08967331740530926, 0.1297614682146505)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (16, NULL, 2, 1, 0, 'f', 1, '6', '0', '3,0,2,1', '0,0,0,0', '0.47858681104743883', '18,0.08199326497032505,2,4', NULL, '2014-07-03 03:17:37.096154', '2014-07-03 03:17:37.096154', 0.02731083249097548, 8, 9, 71, 3, 0.1321943403854799, 0.2343386286639446, 0.4311345275224281)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (17, 2, 2, 4, 6, 'f', 0, '7,5,7,0,1,5,7,7', '0,2,2,1,0,0,1,0', '6,8,0', '0,1,1', '0.9416841583880173,0.792641381341511,0.3811106066941943,0.0086959662675116,2,0.8721316795522752,0.26630478642393407,0.4728524526392013', '0.4308880378815142,0.12123539803448546,0.009163489126253987', '16', '2014-07-03 03:17:37.095397', '2014-07-03 03:17:37.128530', 0.0558846335035475, 5, 9, 33, 86, 0.3741125910777932, 0.0366681444770619, 0.02220938341018736)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (18, NULL, 2, 4, 6, 'f', 2, '2', '2', '8,6,4', '0,1,1', '6', '0.47227708244841093,0.11700926024433411,24', NULL, '2014-07-03 03:17:37.100808', '2014-07-03 03:17:37.100808', 0.05273193126568632, 6, 6, 63, 46, 0.2787651696363173, 0.7427458268061673, 0.02139026613679645)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (19, NULL, 2, 0, 4, 'f', 1, '8,7', '2,0', '3,0,3,1,7,0,7', '0,0,2,2,2,2,1', '0.18219846394203043,0.5887773939234386', '42,0.028741667360867952,41,10,0.9779276226940316,0.02873500082434325,0.9144016193944519', '18', '2014-07-03 03:17:37.100291', '2014-07-03 03:17:37.100291', 0.01926911862989012, 3, 9, 38, 2, 0.8688934714543992, 0.1336689563371856, 0.4889605164508774)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (20, 2, 0, 0, 8, 'f', 0, '4,2,7,7,1,1,6', '0,2,0,2,0,1,2', '0,8,3,6,7,2,4,6', '1,0,2,0,0,1,2,2', '48,2,0.7118028907874476,0.8609068632384714,7,10,0.17503799296745393', '0.011109226672668938,0.23068298114866775,11,0.7315729722451558,0.057245827576521635,6,48,0.09620784755594558', '19', '2014-07-03 03:17:37.099590', '2014-07-03 03:17:37.129054', 0.08153408006576761, 8, 7, 51, 11, 0.07867419185326341, 0.2030713926812784, 0.3846967961296417)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (21, 2, 1, 0, 2, 'f', 0, '0,3,5,6,1', '2,1,1,1,2', '5,0,7,7,5,4,6,5', '0,2,1,2,1,1,2,1', '0.04001281490166941,47,0.8243133278630282,0.2907768973707411,5', '0.045566748207177765,0.06373276502576711,0.1556819657420686,0.5938809981865897,0.0980760508491324,44,0.06375603962557685,0.7286491096753551', NULL, '2014-07-03 03:17:37.106659', '2014-07-03 03:17:37.129574', 0.06425655118454297, 9, 9, 43, 84, 0.1835395504474929, 0.5395047760522693, 0.0152398827273269)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (22, NULL, 1, 8, 0, 'f', 1, '8,5,2,2,5,8', '0,2,1,0,1,1', '3,3,7', '2,2,2', '0.4673970321070791,0.05614359438208083,10,9,0.9987537811068907,0.4310690426003018', '84,41,0.41675762703265984', NULL, '2014-07-03 03:17:37.109314', '2014-07-03 03:17:37.109314', 0.04098527162545632, 6, 8, 62, 51, 0.09781627908590164, 0.273493467547553, 0.3689296270110853)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (23, 2, 0, 1, 6, 'f', 0, '3,1,3', '2,1,2', '4', '1', '49,5,82', '61', '22', '2014-07-03 03:17:37.108757', '2014-07-03 03:17:37.130098', 0.06766947169401247, 4, 8, 12, 79, 0.1836669848896706, 0.4911109341460919, 0.4875043034282697)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (24, NULL, 1, 5, 1, 'f', 1, '7,2,2,2,4,8', '2,0,1,2,0,1', '0,1,8,7,3,0,5,6', '1,2,0,0,1,0,0,1', '0.9513646478945552,10,10,9,46,0.30797486316711026', '0.07490887914169006,4,0.4187804519544935,0.32260832653766425,33,0.07602449814135329,0.13356340451160675,0.519428221320845', NULL, '2014-07-03 03:17:37.112575', '2014-07-03 03:17:37.112575', 0.03922140355575658, 5, 3, 87, 5, 0.188246569857355, 0.3135110792206057, 0.3559448965551719)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (25, 2, 1, 7, 8, 'f', 0, '0,6', '1,1', '8,7', '0,0', '0.0497496434434857,0.1432166605447851', '0.038092420346597045,0.5657823921492018', '24', '2014-07-03 03:17:37.112125', '2014-07-03 03:17:37.130618', 0.02337400043745387, 4, 9, 68, 18, 0.9421083639378828, 0.2566457984842134, 0.1570049607377211)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (26, NULL, 1, 0, 4, 'f', 1, '5,1,3,8,1,7,7,8', '2,1,1,1,1,1,2,1', '6,7,3,1,3,4,5,8', '2,1,1,0,1,2,1,1', '0.20827853778026317,8,66,0.023328540660346953,6,0.6952716613842067,0.11875923514953912,0.0336104453398674', '0.6475793841017783,0.48877435667536173,95,5,40,26,0.030920863181594926,0.351040193047915', NULL, '2014-07-03 03:17:37.115552', '2014-07-03 03:17:37.115552', 0.008121983241916864, 7, 5, 55, 90, 0.8032487408336711, 0.4591264048794214, 0.4458826129578525)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (27, 2, 1, 8, 4, 'f', 0, '2', '2', '3,0,6,0,7,4', '2,1,2,0,0,2', '5', '15,0.08790111548810309,0.7581708574350682,0.02698372545528831,0.07575923974809107,11', '26', '2014-07-03 03:17:37.115026', '2014-07-03 03:17:37.131132', 0.05298731489616763, 10, 7, 43, 4, 0.5799082055171274, 0.5963813189617182, 0.3542791593765954)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (28, NULL, 1, 0, 1, 'f', 3, '5,5', '0,0', '4', '2', '0.464508264198776,0.8883182019306674', '2', NULL, '2014-07-03 03:17:37.119614', '2014-07-03 03:17:37.119614', 0.02713520105341277, 9, 9, 83, 49, 0.2570514293483565, 0.2709738831274565, 0.1043125525762038)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (29, NULL, 2, 7, 0, 'f', 2, '4', '1', '5,6,5,7,8,8,7,5', '0,2,2,0,2,2,0,2', '96', '0.17820580897967786,0.1292979649985211,0.2967096993699492,0.014497851008123064,0.09020165251999296,0.12244708265537319,0.7043987341621927,0.8304610524608562', '28', '2014-07-03 03:17:37.119194', '2014-07-03 03:17:37.119194', 0.08581508958574456, 2, 5, 96, 72, 0.6937655546523179, 0.1764233921739522, 0.07187126770082908)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (30, NULL, 1, 3, 5, 'f', 1, '7', '2', '7,4,4', '0,0,0', '0.7321278264356434', '0.24264745974201452,37,23', '29', '2014-07-03 03:17:37.118762', '2014-07-03 03:17:37.118762', 0.03801594145693392, 9, 7, 93, 97, 0.4442380897661701, 0.3479881293357266, 0.08949080253362302)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "swarm_behaviors" ("id","user_id","comparator_id","property_a_id","property_b_id","random_property_b","depth_level","if_property_ids","if_action_ids","else_property_ids","else_action_ids","if_number_bank","else_number_bank","subbehavior_ids","created_at","updated_at","velocity_scale","max_speed","normal_speed","neighborhood_radius","separation_weight","cohesion_weight","pacekeeping_weight","rand_motion_probability") VALUES (31, 2, 0, 3, 2, 'f', 0, '1,4,1,8,6,8,6', '1,1,1,1,2,0,2', '5,0,5', '0,0,0', '7,20,5,0.3219573962444066,0.7511237297997266,0.2665407080511077,0.6760783499011128', '0.6684288329896811,0.017850534966700006,0.5985537319898184', '30', '2014-07-03 03:17:37.118282', '2014-07-03 03:17:37.131643', 0.005674104229358967, 3, 3, 17, 67, 0.2394621834401175, 0.9432878522511404, 0.1851993900970058)
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "aswarm_behaviors"[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140703011742'
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAlignmentWeightToSwarmBehavior (20140703011742)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (10.1ms)[0m  [1mALTER TABLE "swarm_behaviors" ADD "alignment_weight" decimal[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140703011742"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddRatingToSwarmBehaviors (20140703035228)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "add_rating_to_swarm_behaviors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rating" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140703035228"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAddRatingToSwarmBehaviors (20140703035228)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "add_rating_to_swarm_behaviors"
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140703035228'[0m
+  [1m[35m (8.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAddRatingToSwarmBehaviors (20140703035228)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "add_rating_to_swarm_behaviors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rating" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140703035228"]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddRatingToSwarmBehavior (20140703035331)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "swarm_behaviors" ADD "rating" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140703035331"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/swarm_behaviors/11.json" for 127.0.0.1 at 2014-07-02 22:57:14 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"11"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "11"]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.6ms)
+Completed 200 OK in 52ms (Views: 5.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/11.json" for 127.0.0.1 at 2014-07-02 22:57:47 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"11"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "11"]]
+  Rendered swarm_behaviors/show.json.jbuilder (38.1ms)
+Completed 200 OK in 42ms (Views: 39.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 22:59:09 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "next"]]
+Completed 404 Not Found in 5ms
+
+ActiveRecord::RecordNotFound (Couldn't find SwarmBehavior with id=next):
+  app/controllers/swarm_behaviors_controller.rb:71:in `set_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.9ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:03:05 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: json.extract! @swarm_behavior, :id, :comparator_id, :property_a_id, :property_b_id, :random_property_b, :depth_level, :if_property_ids, :if_action_ids, :else_property_ids, :else_action_ids, :if_number_bank, :else_number_bank, :subbehavior_ids, :velocity_scale, :max_speed, :normal_speed, :neighborhood_radius, :separation_weight, :alignment_weight, :cohesion_weight, :pacekeeping_weight, :rand_motion_probability, :rating
+  app/views/swarm_behaviors/show.json.jbuilder:1:in `_app_views_swarm_behaviors_show_json_jbuilder__3342767489003243500_2173256740'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.6ms)
+  [1m[36mSwarmBehavior Load (1.9ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (8.5ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 11[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (6.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 12  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 13[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 14  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 15[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 16  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 17[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 18  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 19[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 20  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 21[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 22  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 23[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 24  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 25[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 26  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 27[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 28  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 29[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 30  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 31[0m  [["rating", 0], ["updated_at", Thu, 03 Jul 2014 04:06:52 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mSwarmBehavior Load (0.4ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:07:07 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (2.6ms)
+Completed 200 OK in 90ms (Views: 7.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:13:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+Processing by SwarmBehaviorsController#index as HTML
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors"
+  Rendered swarm_behaviors/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 379ms (Views: 378.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/add_rating_to_swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/add_rating_to_swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/swarm_behaviors.css?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-02 23:14:10 -0500
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:46:05 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.7ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (2.1ms)
+Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:50:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.6ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (0.9ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.6ms)
+  [1m[35mSwarmBehavior Load (0.8ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."alignment_weight" IS NULL LIMIT 1
+  [1m[36mSwarmBehavior Load (0.5ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."alignment_weight" IS NULL[0m
+  [1m[35m (0.3ms)[0m  SELECT "swarm_behaviors"."id" FROM "swarm_behaviors" WHERE "swarm_behaviors"."alignment_weight" IS NULL
+  [1m[36mSwarmBehavior Load (0.4ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (9.2ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 11[0m  [["alignment_weight", #<BigDecimal:10216aa28,'0.4813928666 925227E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 12  [["alignment_weight", #<BigDecimal:101f30bb8,'0.4558225026 56001E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 13[0m  [["alignment_weight", #<BigDecimal:10521ed40,'0.3533920456 284207E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 14  [["alignment_weight", #<BigDecimal:101f40ef0,'0.8706930798 199702E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 15[0m  [["alignment_weight", #<BigDecimal:101f53078,'0.4169031396 050871E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 16  [["alignment_weight", #<BigDecimal:101f59220,'0.8884467395 244067E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 17[0m  [["alignment_weight", #<BigDecimal:1052273a0,'0.7608779029 86088E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 18  [["alignment_weight", #<BigDecimal:102171558,'0.3728032980 045696E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 19[0m  [["alignment_weight", #<BigDecimal:1052376d8,'0.8013834916 851492E-1',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 20  [["alignment_weight", #<BigDecimal:102179898,'0.6297161070 9274E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 21[0m  [["alignment_weight", #<BigDecimal:101f73a30,'0.3672995283 268154E-1',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 22  [["alignment_weight", #<BigDecimal:10523dbc8,'0.6825070521 975056E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 23[0m  [["alignment_weight", #<BigDecimal:101f7bd48,'0.4551970257 494868E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 24  [["alignment_weight", #<BigDecimal:101f81ef0,'0.3810150878 911072E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 25[0m  [["alignment_weight", #<BigDecimal:101f880e8,'0.1658180563 173318E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 26  [["alignment_weight", #<BigDecimal:1018ffc58,'0.8907765944 799199E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 27[0m  [["alignment_weight", #<BigDecimal:1019cc578,'0.6973887505 703913E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 28  [["alignment_weight", #<BigDecimal:101a07c68,'0.3030354097 366685E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 29[0m  [["alignment_weight", #<BigDecimal:101a91fd0,'0.9451103838 94305E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 30  [["alignment_weight", #<BigDecimal:101b40148,'0.2568546386 968273E-1',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "alignment_weight" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 31[0m  [["alignment_weight", #<BigDecimal:101bc3368,'0.1010401144 468953E0',18(45)>], ["updated_at", Thu, 03 Jul 2014 04:55:37 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."alignment_weight" IS NULL[0m
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:55:48 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.8ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:55:56 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:55:56 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.9ms)
+Completed 200 OK in 42ms (Views: 41.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:55:57 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (0.8ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:55:57 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.7ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:55:57 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-02 23:55:57 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-03 00:09:08 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.6ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (1.1ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-03 00:09:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-03 00:09:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-03 00:09:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-03 00:09:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-03 00:09:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1[0m
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-03 00:09:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."rating" = 0 LIMIT 1
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
