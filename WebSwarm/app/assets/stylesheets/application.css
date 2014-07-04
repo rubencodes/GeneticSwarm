@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+body {
+	padding: 20px;
+	background: #222;
+	color: #ddd;
+}
+nav.navbar.navbar-inverse>div>.navbar-header>.navbar-brand {
+	color: #f00;
+}

@@ -30,13 +30,16 @@
 // more details in code comments below
 import oscP5.*;
 import netP5.*;
-
 // Processing classes (including graphics)
 import processing.core.PApplet;
 import processing.core.PVector;
 
+
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
 // for random numbers
 import java.util.Random;
+import javax.swing.*;
 
 
 
@@ -181,15 +184,34 @@ public class MusicSwarm extends PApplet {
 		
 		timeStep = 0;
 		
-		// create the Flocks  
-		for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
-			int flockSize = useDefaultFlockSize? defaultFlockSize: nonDefaultInitialFlockSizes[flockID];
-			allFlocks[flockID] = 
-				new Flock(flockID, flockSize, flockType, this, oscP5, myRemoteLocation, new Behavior());
-		}
+		JTextField username = new JTextField(10);
+		JTextField password = new JPasswordField(10);
+	
+	  	JPanel myPanel = new JPanel();
+	  	myPanel.add(new JLabel("Email:"));
+	  	myPanel.add(username);
+	  	myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	  	myPanel.add(new JLabel("Password:"));
+	  	myPanel.add(password);
+	
+	  	int result = JOptionPane.showConfirmDialog(null, myPanel, 
+	           "Enter your WebSwarm Email & Password.", JOptionPane.OK_CANCEL_OPTION);
+	  	if (result == JOptionPane.OK_OPTION) {
+	     	Authenticator.setDefault (new Authenticator() {
+	    	    protected PasswordAuthentication getPasswordAuthentication() {
+	    	        return new PasswordAuthentication (username.getText(), password.getText().toCharArray());
+	    	    }
+	    	});
+	    	
+			
+			// create the Flocks  
+			for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
+				int flockSize = useDefaultFlockSize? defaultFlockSize: nonDefaultInitialFlockSizes[flockID];
+				allFlocks[flockID] = 
+					new Flock(flockID, flockSize, flockType, this, oscP5, myRemoteLocation, new Behavior());
+			}
 
-
-
+	    }
 	}
 
 	

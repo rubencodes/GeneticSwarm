@@ -66,4 +66,9 @@ class SwarmBehavior < ActiveRecord::Base
 				return rand / 2
 		end
 	end
+	
+	def self.get_next_swarm_behavior(user_id)
+		@swarm_behaviors 	= User.find_by(id: user_id).swarm_behaviors
+		@swarm_behaviors.where(rating: 0).order(:created_at).first
+	end
 end
