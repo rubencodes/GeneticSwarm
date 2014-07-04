@@ -4,7 +4,8 @@ WebSwarm::Application.routes.draw do
 
   resources :users
 	
-	match '/login_attempt' => 'login#login_attempt', :via => :post
+	match '/login_attempt' 	=> 'login#login_attempt', :via => :post
+	match '/logout' 				=> 'login#logout', :via => :post
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

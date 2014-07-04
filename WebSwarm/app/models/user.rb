@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 		end
 	end
 	def generate_initial_behaviors
-		10.times {
+		12.times {
 			self.swarm_behaviors << SwarmBehavior.create
 		}
 	end

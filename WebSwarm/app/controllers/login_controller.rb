@@ -8,4 +8,8 @@ class LoginController < ApplicationController
       redirect_to :back, :flash => { :notice => "Sorry, that email or password is invalid. Try again." }
     end
   end
+	def logout
+		reset_session
+		redirect_to url_for(controller: "welcome", action: "index"), :flash => { :notice => "Thanks for playing! Have a nice day!" }
+	end
 end
