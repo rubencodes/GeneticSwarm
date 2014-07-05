@@ -2,8 +2,8 @@ class SwarmBehavior < ActiveRecord::Base
 	before_create :generate_new
 	
 	def generate_new
-		self.rating					 	= 0 #new behaviors are unrated
-		unless self.comparator_id && self.property_a_id && self.property_b_id #if not evolved
+		self.rating					 	= 0 #all new behaviors are unrated
+		unless self.comparator_id && self.property_a_id && self.property_b_id #if not evolved, randomly generate
 			self.comparator_id 	= rand(3)	#0,1,2
 			self.property_a_id 	= rand(9)	#0,1,2...8
 			self.property_b_id 	= rand(9)	#0,1,2...8
@@ -48,26 +48,27 @@ class SwarmBehavior < ActiveRecord::Base
 		end
 	end
 	
+	#generates randoms within the proper range for each property
 	def random_in_range(property_id)
 		case property_id
-			when 0
+			when 0 #velocity scale
 				return rand / 10.0
-			when 1
+			when 1 #max speed
 				return rand(9) + 2
-			when 2
+			when 2 #normal speed
 				return rand(9) + 2
-			when 3
+			when 3 #neighborhood radius
 				return rand(91) + 10
-			when 4
+			when 4 #separation weight
 				return rand(101)
-			when 5
+			when 5 #alignment weight
 				return rand
-			when 6
+			when 6 #cohesion weight
 				return rand
-			when 7
+			when 7 #pacekeeping weight
 				return rand
-			when 8
-				return rand / 2
+			when 8 #random motion probability
+				return rand / 2.0
 		end
 	end
 	
@@ -82,7 +83,7 @@ class SwarmBehavior < ActiveRecord::Base
 		@TheChosenOnes 		= selection(@swarm_behaviors)
 		@NextGeneration		= crossover(@TheChosenOnes)
 		@NewPopulation		= mutation (@NextGeneration)
-		@NewPopulation.each do |x|
+		@NewPopulation.each do |x| #add each new behavior to user for evaluation
 			@user.swarm_behaviors << x
 		end
 	end
@@ -230,7 +231,7 @@ class SwarmBehavior < ActiveRecord::Base
 																									alignment_weight:					@prop_array_a[5],
 																									cohesion_weight:					@prop_array_a[6],
 																									pacekeeping_weight:				@prop_array_a[7],
-																									rand_motion_probability:	@prop_array_a[8], )
+																									rand_motion_probability:	@prop_array_a[8] )
 			
 			@next_generation.push	SwarmBehavior.create(	comparator_id:						@new_b_comparator,
 																									property_a_id:						@new_b_property_a,
@@ -246,11 +247,68 @@ class SwarmBehavior < ActiveRecord::Base
 																									alignment_weight:					@prop_array_b[5],
 																									cohesion_weight:					@prop_array_b[6],
 																									pacekeeping_weight:				@prop_array_b[7],
-																									rand_motion_probability:	@prop_array_b[8], )
+																									rand_motion_probability:	@prop_array_b[8] )
 		end
 	end
 	
+	#probabilistically mutate each member of the new population
 	def mutation(behaviors)
-		
+		behaviors.each do |behavior|
+			#mutation probability depends on chromosome length
+			@mutation_probability = 0.015 / (12 + 6 * behavior.if_property_ids.length)
+			
+			#mutate if condition
+			behavior.comparator_id 	= rand(3)	if @mutation_probability > rand
+			behavior.property_a_id 	= rand(9) if @mutation_probability > rand
+			behavior.property_b_id 	= rand(9) if @mutation_probability > rand
+			
+			#mutate properties
+			temp_arr = behavior.if_property_ids.split(",").map do | prop |
+				prop = rand(9) if @mutation_probability > rand
+			end
+			behavior.if_property_ids = temp_arr.join(",")
+			
+			temp_arr = behavior.else_property_ids.split(",").map do | prop |
+				prop = rand(9) if @mutation_probability > rand
+			end
+			behavior.else_property_ids = temp_arr.join(",")
+			
+			#mutate actions
+			temp_arr = behavior.if_action_ids.split(",").map do | act |
+				act = rand(3) if @mutation_probability > rand
+			end
+			behavior.if_action_ids = temp_arr.join(",")
+			
+			temp_arr = behavior.else_action_ids.split(",").map do | act |
+				act = rand(3) if @mutation_probability > rand
+			end
+			behavior.else_action_ids = temp_arr.join(",")
+			
+			#mutate number banks
+			if_prop_array 	= behavior.if_property_ids.split(",")
+			temp_arr = behavior.if_number_bank.split(",").map.with_index do | num, i |
+				num = random_in_range(if_prop_array[i]) if @mutation_probability > rand
+			end
+			behavior.if_number_bank = temp_arr.join(",")
+			
+			else_prop_array = behavior.else_property_ids.split(",")
+			temp_arr = behavior.else_number_bank.split(",").map.with_index do | num, i |
+				num = random_in_range(else_prop_array[i]) if @mutation_probability > rand
+			end
+			behavior.else_number_bank		= else_number_bank_array.join(",")
+
+			#behavior properties
+			behavior.velocity_scale						= random_in_range 0 if @mutation_probability > rand
+			behavior.max_speed								= random_in_range 1 if @mutation_probability > rand
+			behavior.normal_speed							= random_in_range 2 if @mutation_probability > rand
+			behavior.neighborhood_radius			= random_in_range 3 if @mutation_probability > rand
+			behavior.separation_weight				= random_in_range 4 if @mutation_probability > rand
+			behavior.alignment_weight					= random_in_range 5 if @mutation_probability > rand
+			behavior.cohesion_weight					= random_in_range 6 if @mutation_probability > rand
+			behavior.pacekeeping_weight				= random_in_range 7 if @mutation_probability > rand
+			behavior.rand_motion_probability	= random_in_range 8 if @mutation_probability > rand
+			
+			behavior.save
+		end
 	end
 end

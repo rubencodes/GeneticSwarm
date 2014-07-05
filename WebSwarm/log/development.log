@@ -9760,3 +9760,81 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-04 23:07:39
 
 
 Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-07-04 23:07:39 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 132ms (Views: 21.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/add_rating_to_swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:51 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/add_rating_to_swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-05 00:33:53 -0500
