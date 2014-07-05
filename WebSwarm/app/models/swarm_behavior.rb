@@ -2,7 +2,8 @@ class SwarmBehavior < ActiveRecord::Base
 	before_create :generate_new
 	
 	def generate_new
-		self.rating					 	= 0 #all new behaviors are unrated
+		self.name		= Faker::Name.first_name
+		self.rating	= 0 #all new behaviors are unrated
 		unless self.comparator_id && self.property_a_id && self.property_b_id #if not evolved, randomly generate
 			self.comparator_id 	= rand(3)	#0,1,2
 			self.property_a_id 	= rand(9)	#0,1,2...8
@@ -41,7 +42,7 @@ class SwarmBehavior < ActiveRecord::Base
 			self.pacekeeping_weight				= random_in_range 7
 			self.rand_motion_probability	= random_in_range 8
 
-			if rand(2).zero?
+			if rand(2).zero? && self.depthlevel < 3
 				@sub = SwarmBehavior.create(depth_level: self.depth_level+1)
 				self.subbehavior_ids = @sub.id
 			end

@@ -11,13 +11,87 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704031215) do
+ActiveRecord::Schema.define(version: 20140705222409) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "add_rating_to_swarm_behaviors", force: true do |t|
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "api_keys", force: true do |t|
+    t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "level"
+    t.integer  "owner_id"
+  end
+
+  create_table "clinics", force: true do |t|
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.text     "description"
+    t.string   "phone"
+    t.decimal  "rating"
+    t.text     "hours"
+    t.string   "admin_id"
+    t.string   "password"
+    t.string   "queue_id"
+    t.string   "approval"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "location_id"
+  end
+
+  create_table "clinics_insurances", id: false, force: true do |t|
+    t.integer  "insurance_id"
+    t.integer  "clinic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "insurances", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interesteds", force: true do |t|
+    t.string   "first_name"
+    t.string   "email"
+    t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "patients", force: true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "queue_id"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "session_id"
+  end
+
+  create_table "superusers", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "superusers", ["username"], name: "index_superusers_on_username", unique: true, using: :btree
 
   create_table "swarm_behaviors", force: true do |t|
     t.integer  "user_id"
@@ -45,6 +119,7 @@ ActiveRecord::Schema.define(version: 20140704031215) do
     t.decimal  "rand_motion_probability"
     t.decimal  "alignment_weight"
     t.integer  "rating"
+    t.string   "name"
   end
 
   create_table "users", force: true do |t|

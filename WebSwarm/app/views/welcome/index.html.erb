@@ -3,35 +3,48 @@
 <% end -%>
 <% if !@user %>
 	<h2>Welcome!</h2>
+	<p>If you're new here, Sign Up at the link above and then download the latest version of our Java Applet.</p>
 <% else %>
 	<section id="mainbody" class="text-center">
 		<h2>Welcome, <%= @user.firstname =%>!</h2>
-		<p>Your next Swarm ID is: <%= @swarm.id =%></p>
-		<p>Please reopen the MusicSwarm Java Applet, watch the animation, and rate its visual appeal.</p><br><br>
+		<p>This swarm is named <%= @swarm.name =%>.</p>
+		<p>Please (re)open the Swarm Java Applet, watch <%= @swarm.name =%>, and rate their visual appeal.</p><br><br>
 		<%= form_for @swarm, url: {:action => "update", :controller => "swarm_behaviors", :id => @swarm.id}, html: {:class => "form-inline", :method => "patch"} do |f| %>
 			<div class="form-group">
-				<%= f.radio_button(:rating, 1) %>
-				<%= label_tag(:rating_1, "1") %>&nbsp;
-				<%= f.radio_button(:rating, 2) %>
-				<%= label_tag(:rating_2, "2") %>&nbsp;
-				<%= f.radio_button(:rating, 3) %>
-				<%= label_tag(:rating_3, "3") %>&nbsp;
-				<%= f.radio_button(:rating, 4) %>
-				<%= label_tag(:rating_4, "4") %>&nbsp;
-				<%= f.radio_button(:rating, 5) %>
-				<%= label_tag(:rating_5, "5") %>&nbsp;
-				<%= f.radio_button(:rating, 6) %>
-				<%= label_tag(:rating_6, "6") %>&nbsp;
-				<%= f.radio_button(:rating, 7) %>
-				<%= label_tag(:rating_7, "7") %>&nbsp;
-				<%= f.radio_button(:rating, 8) %>
-				<%= label_tag(:rating_8, "8") %>&nbsp;
-				<%= f.radio_button(:rating, 9) %>
-				<%= label_tag(:rating_9, "9") %>&nbsp;
-				<%= f.radio_button(:rating, 10) %>
-				<%= label_tag(:rating_10, "10") %>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 1) %> (Worst) 1
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 2) %> 2
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 3) %> 3
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 4) %> 4
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 5) %> 5
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 6) %> 6
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 7) %> 7
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 8) %> 8
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 9) %> 9
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button(:rating, 10) %> 10 (Best)
+					</label>
+				</div>
 			</div><br><br>
-			<button type="submit" class="btn btn-primary">Rate</button>
+			<button type="submit" class="btn btn-danger">Rate</button>
 		<% end %>
 	</section>
 <% end %>
