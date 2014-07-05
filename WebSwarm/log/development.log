@@ -12373,3 +12373,1124 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-05 04:48:27
 
 
 Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-07-05 04:48:27 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (1.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.9ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 87ms (Views: 51.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/add_rating_to_swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-07-05 13:11:07 -0500
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 13:38:03 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (3.5ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+Completed 500 Internal Server Error in 125ms
+
+NoMethodError (undefined method `swarm_behaviors' for #<SwarmBehavior:0x00000107022990>):
+  app/controllers/swarm_behaviors_controller.rb:50:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.1ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 13:40:09 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+Completed 500 Internal Server Error in 108ms
+
+NoMethodError (undefined method `swarm_behaviors' for #<SwarmBehavior:0x00000102780b10>):
+  app/controllers/swarm_behaviors_controller.rb:50:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 13:40:30 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.5ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+Completed 500 Internal Server Error in 119ms
+
+NoMethodError (undefined method `split' for nil:NilClass):
+  app/controllers/swarm_behaviors_controller.rb:50:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 13:42:55 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (11.2ms)
+Completed 200 OK in 149ms (Views: 13.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 13:43:21 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.7ms)
+Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 0.7ms)
+  [1m[36mSwarmBehavior Load (1.7ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" ORDER BY "swarm_behaviors"."id" DESC LIMIT 1[0m
+  [1m[35m (1.1ms)[0m  SELECT "swarm_behaviors"."subbehavior_ids" FROM "swarm_behaviors"
+  [1m[36m (0.8ms)[0m  [1mSELECT "swarm_behaviors"."id", "swarm_behaviors"."subbehavior_ids" FROM "swarm_behaviors"[0m
+  [1m[35mSwarmBehavior Load (1.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (3.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 149]]
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 149]]
+  [1m[36mSwarmBehavior Load (3.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 149]]
+  [1m[36mSwarmBehavior Load (3.0ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 149]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "148"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "147"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "146"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "145"]]
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 147]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:08:38 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (3.6ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 167]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.4ms)
+Completed 200 OK in 127ms (Views: 5.6ms | ActiveRecord: 5.5ms)
+  [1m[36mSwarmBehavior Load (0.5ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 147]]
+  [1m[36mSwarmBehavior Load (4.0ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 147]]
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "146"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "145"]]
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:15:40 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (3.8ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.1ms)
+Completed 200 OK in 125ms (Views: 4.3ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:17:09 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (1.9ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.1ms)
+Completed 200 OK in 133ms (Views: 2.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:19:50 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.6ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.3ms)
+Completed 200 OK in 133ms (Views: 3.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:20:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (2.6ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.1ms)
+Completed 200 OK in 98ms (Views: 2.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:20:33 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (7.8ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.1ms)
+Completed 200 OK in 95ms (Views: 3.3ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:21:12 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.7ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+Completed 500 Internal Server Error in 96ms
+
+NoMethodError (undefined method `find_all_subbehaviors' for nil:NilClass):
+  app/controllers/swarm_behaviors_controller.rb:48:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.4ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:21:45 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (2.8ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.1ms)
+Completed 200 OK in 101ms (Views: 3.3ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:21:54 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.1ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:22:40 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.4ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.2ms)
+Completed 200 OK in 87ms (Views: 3.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:22:55 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.7ms)
+Completed 200 OK in 94ms (Views: 5.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:40:58 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:40:58 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 70ms
+
+NoMethodError (undefined method `swarm_behaviors' for nil:NilClass):
+  app/models/swarm_behavior.rb:76:in `get_next_swarm_behavior'
+  app/controllers/swarm_behaviors_controller.rb:51:in `block in set_next_swarm_behavior'
+  app/controllers/swarm_behaviors_controller.rb:49:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:41:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (3.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.3ms)
+Completed 200 OK in 64ms (Views: 7.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:41:29 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:41:29 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `swarm_behaviors' for nil:NilClass):
+  app/models/swarm_behavior.rb:76:in `get_next_swarm_behavior'
+  app/controllers/swarm_behaviors_controller.rb:51:in `block in set_next_swarm_behavior'
+  app/controllers/swarm_behaviors_controller.rb:49:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.8ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:44:16 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:44:16 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 65ms
+
+NoMethodError (undefined method `swarm_behaviors' for nil:NilClass):
+  app/models/swarm_behavior.rb:76:in `get_next_swarm_behavior'
+  app/controllers/swarm_behaviors_controller.rb:51:in `block in set_next_swarm_behavior'
+  app/controllers/swarm_behaviors_controller.rb:49:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.9ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:47:05 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:47:05 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (3.4ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.1ms)
+Completed 200 OK in 117ms (Views: 6.4ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:48:27 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:48:27 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:48:27 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:48:27 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:48:27 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:48:27 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:48:27 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.5ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.0ms)
+Completed 200 OK in 8ms (Views: 4.3ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/swarm_behaviors/167" for 127.0.0.1 at 2014-07-05 14:49:03 -0500
+Processing by SwarmBehaviorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p40HcoRrDj+8WZsIgWDSog+zwYlf0zQwcTkq9TbXpZ0=", "swarm_behavior"=>{"rating"=>"6"}, "id"=>"167"}
+  [1m[35mSwarmBehavior Load (4.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "167"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 167  [["rating", 6], ["updated_at", Sat, 05 Jul 2014 19:49:03 UTC +00:00]]
+  [1m[36m (7.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.6ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 31ms (ActiveRecord: 13.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 14:49:03 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 20ms (Views: 13.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (1.0ms)
+Completed 200 OK in 10ms (Views: 4.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:23 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/swarm_behaviors/168" for 127.0.0.1 at 2014-07-05 14:49:38 -0500
+Processing by SwarmBehaviorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p40HcoRrDj+8WZsIgWDSog+zwYlf0zQwcTkq9TbXpZ0=", "swarm_behavior"=>{"rating"=>"3"}, "id"=>"168"}
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "168"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 168[0m  [["rating", 3], ["updated_at", Sat, 05 Jul 2014 19:49:38 UTC +00:00]]
+  [1m[35m (9.0ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms (ActiveRecord: 10.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 14:49:38 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:53 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:53 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.8ms)
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:53 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:53 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:53 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:53 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:49:53 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.5ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.9ms)
+Completed 200 OK in 53ms (Views: 3.6ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/swarm_behaviors/169" for 127.0.0.1 at 2014-07-05 14:50:26 -0500
+Processing by SwarmBehaviorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p40HcoRrDj+8WZsIgWDSog+zwYlf0zQwcTkq9TbXpZ0=", "swarm_behavior"=>{"rating"=>"7"}, "id"=>"169"}
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "169"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 169  [["rating", 7], ["updated_at", Sat, 05 Jul 2014 19:50:26 UTC +00:00]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.5ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 14:50:26 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:50:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:50:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.9ms)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:50:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:50:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:50:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:50:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:50:41 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.8ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/swarm_behaviors/170" for 127.0.0.1 at 2014-07-05 14:50:55 -0500
+Processing by SwarmBehaviorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p40HcoRrDj+8WZsIgWDSog+zwYlf0zQwcTkq9TbXpZ0=", "swarm_behavior"=>{"rating"=>"5"}, "id"=>"170"}
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "170"]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 170[0m  [["rating", 5], ["updated_at", Sat, 05 Jul 2014 19:50:55 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.4ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 14:50:55 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.4ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:10 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.8ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/swarm_behaviors/171" for 127.0.0.1 at 2014-07-05 14:51:28 -0500
+Processing by SwarmBehaviorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p40HcoRrDj+8WZsIgWDSog+zwYlf0zQwcTkq9TbXpZ0=", "swarm_behavior"=>{"rating"=>"4"}, "id"=>"171"}
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "171"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  UPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 171  [["rating", 4], ["updated_at", Sat, 05 Jul 2014 19:51:28 UTC +00:00]]
+  [1m[36m (8.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms (ActiveRecord: 10.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 14:51:28 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (1.0ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 18ms (Views: 9.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:46 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:46 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:46 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:46 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:47 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:47 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.7ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 14:51:47 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered swarm_behaviors/show.json.jbuilder (0.6ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/swarm_behaviors/172" for 127.0.0.1 at 2014-07-05 14:52:04 -0500
+Processing by SwarmBehaviorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p40HcoRrDj+8WZsIgWDSog+zwYlf0zQwcTkq9TbXpZ0=", "swarm_behavior"=>{"rating"=>"6"}, "id"=>"172"}
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "172"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "swarm_behaviors" SET "rating" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 172[0m  [["rating", 6], ["updated_at", Sat, 05 Jul 2014 19:52:04 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (1.0ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ?  [["user_id", 2]]
+Completed 500 Internal Server Error in 13ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: user_id):
+  app/models/swarm_behavior.rb:127:in `block in crossover'
+  app/models/swarm_behavior.rb:122:in `each'
+  app/models/swarm_behavior.rb:122:in `each_with_index'
+  app/models/swarm_behavior.rb:122:in `crossover'
+  app/models/swarm_behavior.rb:89:in `breed_next_generation'
+  app/controllers/swarm_behaviors_controller.rb:23:in `update'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.3ms)
+
+
+Started PATCH "/swarm_behaviors/172" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+Processing by SwarmBehaviorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p40HcoRrDj+8WZsIgWDSog+zwYlf0zQwcTkq9TbXpZ0=", "swarm_behavior"=>{"rating"=>"6"}, "id"=>"172"}
+  [1m[36mSwarmBehavior Load (1.0ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "172"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (2.3ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSwarmBehavior Load (0.5ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "updated_at", "user_id", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:107049fe0,'0.3529042132 374929E0',18(45)>], ["cohesion_weight", #<BigDecimal:10704a5d0,'0.6214133909 763845E0',18(45)>], ["comparator_id", 1], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:10704a940,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10704a850,'0.58E2',9(36)>], ["normal_speed", #<BigDecimal:10704a8c8,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10704a378,'0.4573273386 771206E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:10704a198,'0.2887633840 91668E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:10704a7d8,'0.67E2',9(36)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["user_id", 2], ["velocity_scale", #<BigDecimal:10704a9b8,'0.9005176596 211079E-1',18(45)>]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "subbehavior_ids", "updated_at", "user_id", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:10705bb00,'0.9646802019 884192E0',18(45)>], ["cohesion_weight", #<BigDecimal:1019d8080,'0.9906941851 540888E0',18(45)>], ["comparator_id", 0], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,0,0,2,2,1,0"], ["else_number_bank", "3,0.10550047894182107,0.06996336045971788,5,90,9,0.44886025778880856"], ["else_property_ids", "1,8,0,1,3,2,8"], ["if_action_ids", "0,2,1,2"], ["if_number_bank", "9,0.020037990030684683,0.402593233738527,0.606742432824277"], ["if_property_ids", "1,8,8,5"], ["max_speed", #<BigDecimal:1019d83c8,'0.8E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1019d82d8,'0.53E2',9(36)>], ["normal_speed", #<BigDecimal:1019d8350,'0.5E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10705be70,'0.6695783963 753233E0',18(45)>], ["property_a_id", 2], ["property_b_id", 3], ["rand_motion_probability", #<BigDecimal:10705bcb8,'0.1811306260 761812E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:1019d8260,'0.79E2',9(36)>], ["subbehavior_ids", "30"], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["user_id", 2], ["velocity_scale", #<BigDecimal:1019d8468,'0.1425364864 641984E-1',18(45)>]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:1019e2e40,'0.3529042132 374929E0',18(45)>], ["cohesion_weight", #<BigDecimal:1019e2be8,'0.6214133909 763845E0',18(45)>], ["comparator_id", 1], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0,2,1,2"], ["if_number_bank", "9,0.020037990030684683,0.402593233738527,0.606742432824277"], ["if_property_ids", "1,8,8,5"], ["max_speed", #<BigDecimal:1019e31b0,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1019e3098,'0.58E2',9(36)>], ["normal_speed", #<BigDecimal:1019e3138,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1019e2a30,'0.4573273386 771206E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:1019e2878,'0.2887633840 91668E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:1019e3020,'0.67E2',9(36)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["velocity_scale", #<BigDecimal:1019e3228,'0.9005176596 211079E-1',18(45)>]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1019e16f8,'0.9646802019 884192E0',18(45)>], ["cohesion_weight", #<BigDecimal:1019e1540,'0.9906941851 540888E0',18(45)>], ["comparator_id", 0], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,0,0,2,2,1,0"], ["else_number_bank", "3,0.10550047894182107,0.06996336045971788,5,90,9,0.44886025778880856"], ["else_property_ids", "1,8,0,1,3,2,8"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:1019e1a18,'0.8E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1019e1928,'0.53E2',9(36)>], ["normal_speed", #<BigDecimal:1019e19a0,'0.5E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1019e1388,'0.6695783963 753233E0',18(45)>], ["property_a_id", 2], ["property_b_id", 3], ["rand_motion_probability", #<BigDecimal:1019e11d0,'0.1811306260 761812E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:1019e18b0,'0.79E2',9(36)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["velocity_scale", #<BigDecimal:1019e1a90,'0.1425364864 641984E-1',18(45)>]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "subbehavior_ids", "updated_at", "user_id", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:1031f9510,'0.3529042132 374929E0',18(45)>], ["cohesion_weight", #<BigDecimal:1031f9a38,'0.6214133909 763845E0',18(45)>], ["comparator_id", 2], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:1031f9dd0,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1031f9ce0,'0.58E2',9(36)>], ["normal_speed", #<BigDecimal:1031f9d58,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1031f9880,'0.4573273386 771206E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:1031f96c8,'0.2887633840 91668E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:1031f9c68,'0.67E2',9(36)>], ["subbehavior_ids", "26"], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["user_id", 2], ["velocity_scale", #<BigDecimal:1031f9e48,'0.9005176596 211079E-1',18(45)>]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "subbehavior_ids", "updated_at", "user_id", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:103211f70,'0.3529042132 374929E0',18(45)>], ["cohesion_weight", #<BigDecimal:1032124c0,'0.6214133909 763845E0',18(45)>], ["comparator_id", 2], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:1032127e0,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:1032126f0,'0.58E2',9(36)>], ["normal_speed", #<BigDecimal:103212768,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:103212308,'0.4573273386 771206E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:103212128,'0.2887633840 91668E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:103212678,'0.67E2',9(36)>], ["subbehavior_ids", "26"], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["user_id", 2], ["velocity_scale", #<BigDecimal:103212858,'0.9005176596 211079E-1',18(45)>]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:107851c10,'0.3529042132 374929E0',18(45)>], ["cohesion_weight", #<BigDecimal:107851a58,'0.6214133909 763845E0',18(45)>], ["comparator_id", 2], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:107851f30,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:107851e40,'0.58E2',9(36)>], ["normal_speed", #<BigDecimal:107851eb8,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1078518a0,'0.4573273386 771206E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:1078516e8,'0.2887633840 91668E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:107851dc8,'0.67E2',9(36)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["velocity_scale", #<BigDecimal:107851fa8,'0.9005176596 211079E-1',18(45)>]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:107851c10,'0.3529042132 374929E0',18(45)>], ["cohesion_weight", #<BigDecimal:107851a58,'0.6214133909 763845E0',18(45)>], ["comparator_id", 2], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:107851f30,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:107851e40,'0.58E2',9(36)>], ["normal_speed", #<BigDecimal:107851eb8,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:1078518a0,'0.4573273386 771206E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:1078516e8,'0.2887633840 91668E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:107851dc8,'0.67E2',9(36)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["velocity_scale", #<BigDecimal:107851fa8,'0.9005176596 211079E-1',18(45)>]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "updated_at", "user_id", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:10787b268,'0.3529042132 374929E0',18(45)>], ["cohesion_weight", #<BigDecimal:10787b858,'0.6214133909 763845E0',18(45)>], ["comparator_id", 1], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:10787bbc8,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10787bad8,'0.58E2',9(36)>], ["normal_speed", #<BigDecimal:10787bb50,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10787b678,'0.4573273386 771206E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:10787b498,'0.2887633840 91668E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:10787ba60,'0.67E2',9(36)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["user_id", 2], ["velocity_scale", #<BigDecimal:10787bc40,'0.9005176596 211079E-1',18(45)>]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "subbehavior_ids", "updated_at", "user_id", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:10322a980,'0.7608779029 86088E0',18(45)>], ["cohesion_weight", #<BigDecimal:10322aef8,'0.3741125910 777932E0',18(45)>], ["comparator_id", 2], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,1,1"], ["else_number_bank", "0.4308880378815142,0.12123539803448546,0.009163489126253987"], ["else_property_ids", "6,8,0"], ["if_action_ids", "0,2,2,1,0,0,1,0"], ["if_number_bank", "0.9416841583880173,0.792641381341511,0.3811106066941943,0.0086959662675116,2,0.8721316795522752,0.26630478642393407,0.4728524526392013"], ["if_property_ids", "7,5,7,0,1,5,7,7"], ["max_speed", #<BigDecimal:10322b218,'0.5E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10322b128,'0.33E2',9(36)>], ["normal_speed", #<BigDecimal:10322b1a0,'0.9E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:10322ad40,'0.3666814447 70619E-1',18(45)>], ["property_a_id", 4], ["property_b_id", 6], ["rand_motion_probability", #<BigDecimal:10322ab60,'0.2220938341 018736E-1',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:10322b0b0,'0.86E2',9(36)>], ["subbehavior_ids", "16"], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["user_id", 2], ["velocity_scale", #<BigDecimal:10322b290,'0.5588463350 35475E-1',18(45)>]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "pacekeeping_weight", "property_a_id", "property_b_id", "rand_motion_probability", "random_property_b", "rating", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["alignment_weight", #<BigDecimal:101188740,'0.33E2',9(36)>], ["cohesion_weight", #<BigDecimal:101188218,'0.86E2',9(36)>], ["comparator_id", 1], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "2,2,0,2,0,0,0,2"], ["else_number_bank", "11,0.22087979398040236,0.3111897269159292,0.019998043298923997,0.8893431649246054,4,2,0.4823042806630744"], ["else_property_ids", "4,8,8,0,6,2,1,7"], ["if_action_ids", "0"], ["if_number_bank", "0.7631853483660611"], ["if_property_ids", "7"], ["max_speed", #<BigDecimal:1019e31b0,'0.6E1',9(36)>], ["neighborhood_radius", #<BigDecimal:10118a158,'0.5E1',9(36)>], ["normal_speed", #<BigDecimal:1019e3138,'0.2E1',9(36)>], ["pacekeeping_weight", #<BigDecimal:101810ec8,'0.7608779029 86088E0',18(45)>], ["property_a_id", 5], ["property_b_id", 1], ["rand_motion_probability", #<BigDecimal:10182a260,'0.3741125910 777932E0',18(45)>], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:101188f88,'0.9E1',9(36)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["velocity_scale", #<BigDecimal:1019e3228,'0.9005176596 211079E-1',18(45)>]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "swarm_behaviors" ("alignment_weight", "cohesion_weight", "comparator_id", "created_at", "depth_level", "else_action_ids", "else_number_bank", "else_property_ids", "if_action_ids", "if_number_bank", "if_property_ids", "max_speed", "neighborhood_radius", "normal_speed", "property_a_id", "property_b_id", "random_property_b", "rating", "separation_weight", "updated_at", "velocity_scale") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["alignment_weight", #<BigDecimal:1019e2a30,'0.4573273386 771206E0',18(45)>], ["cohesion_weight", #<BigDecimal:1019e2878,'0.2887633840 91668E0',18(45)>], ["comparator_id", 2], ["created_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["depth_level", 0], ["else_action_ids", "0,1,1"], ["else_number_bank", "0.4308880378815142,0.12123539803448546,0.009163489126253987"], ["else_property_ids", "6,8,0"], ["if_action_ids", "0,2,2,1,0,0,1,0"], ["if_number_bank", "0.9416841583880173,0.792641381341511,0.3811106066941943,0.0086959662675116,2,0.8721316795522752,0.26630478642393407,0.4728524526392013"], ["if_property_ids", "7,5,7,0,1,5,7,7"], ["max_speed", #<BigDecimal:1019e3098,'0.58E2',9(36)>], ["neighborhood_radius", #<BigDecimal:1019e2e40,'0.3529042132 374929E0',18(45)>], ["normal_speed", #<BigDecimal:1019e3020,'0.67E2',9(36)>], ["property_a_id", 4], ["property_b_id", 6], ["random_property_b", false], ["rating", 0], ["separation_weight", #<BigDecimal:1019e2be8,'0.6214133909 763845E0',18(45)>], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00], ["velocity_scale", #<BigDecimal:10118bfa8,'0.5588463350 35475E-1',18(45)>]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 175[0m  [["user_id", 2], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 176  [["user_id", 2], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 179[0m  [["user_id", 2], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 180  [["user_id", 2], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 183[0m  [["user_id", 2], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "swarm_behaviors" SET "user_id" = ?, "updated_at" = ? WHERE "swarm_behaviors"."id" = 184  [["user_id", 2], ["updated_at", Sat, 05 Jul 2014 20:03:49 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 296ms (ActiveRecord: 36.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."user_id" = ? AND "swarm_behaviors"."rating" = 0 ORDER BY "swarm_behaviors".created_at ASC LIMIT 1  [["user_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 19ms (Views: 14.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/add_rating_to_swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/swarm_behaviors.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-05 15:03:49 -0500
+  [1m[36mSwarmBehavior Load (1.7ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", 149]]
+  [1m[35mSwarmBehavior Load (0.3ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "148"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "147"]]
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "146"]]
+  [1m[36mSwarmBehavior Load (0.2ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "145"]]
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 15:10:59 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 15:10:59 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+  Rendered swarm_behaviors/show.json.jbuilder (4.8ms)
+Completed 200 OK in 131ms (Views: 16.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 15:10:59 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.0ms)
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 15:11:00 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.1ms)
+Completed 200 OK in 9ms (Views: 4.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 15:11:00 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.4ms)
+Completed 200 OK in 9ms (Views: 4.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 15:11:00 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.4ms)
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 15:11:00 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'Ruben' AND "users"."password" = 'Martinez' LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", 149]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "148"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "147"]]
+  [1m[36mSwarmBehavior Load (0.1ms)[0m  [1mSELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1[0m  [["id", "146"]]
+  [1m[35mSwarmBehavior Load (0.1ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = ? LIMIT 1  [["id", "145"]]
+  Rendered swarm_behaviors/show.json.jbuilder (2.7ms)
+Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 0.6ms)

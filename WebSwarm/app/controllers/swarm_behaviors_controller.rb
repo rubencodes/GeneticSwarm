@@ -44,15 +44,17 @@ class SwarmBehaviorsController < ApplicationController
   private
 		def set_next_swarm_behavior
 			if(session[:user_id])
-				@swarm_behavior = SwarmBehavior.get_next_swarm_behavior(session[:user_id])
+				@swarm_behaviors = SwarmBehavior.get_next_swarm_behavior(session[:user_id]).find_all_subbehaviors
 			else
 				authenticate_or_request_with_http_basic('WebSwarm') do |email, password|
 					if @user = User.find_by(username: email, password: password)
-						@swarm_behavior = SwarmBehavior.get_next_swarm_behavior(@user.id)
+						session[:user_id] = @user.id
+						@swarm_behaviors = SwarmBehavior.find(149).find_all_subbehaviors
 					end
 				end
 			end
 		end
+	
     # Use callbacks to share common setup or constraints between actions.
     def set_swarm_behavior
       @swarm_behavior = SwarmBehavior.find(params[:id])

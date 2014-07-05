@@ -121,9 +121,14 @@ class SwarmBehavior < ActiveRecord::Base
 		#for every two behaviors
 		behaviors.each_with_index do | behavior_a, behavior_index |
 			next if behavior_index.odd? #skip one
+			behavior_b = behaviors[behavior_index+1] #select second behavior
 			
-			#select second behavior
-			behavior_b = behaviors[behavior_index+1]
+			#tournament selected individuals automatically survive to the next generation
+			@copy_a = behavior_a.dup
+			@copy_a.save
+			@copy_b = behavior_b.dup
+			@copy_b.save
+			@next_generation.push @copy_a, @copy_b
 			
 			#set new behavior a defaults (copy of behavior a)
 			@new_a_comparator = behavior_a.comparator_id
@@ -136,6 +141,7 @@ class SwarmBehavior < ActiveRecord::Base
 			@new_a_if_properties = @new_a_if_actions = @new_a_if_numbers 				= [] if @new_a_if_properties.nil?
 			@new_a_else_properties, @new_a_else_actions, @new_a_else_numbers 		= @else_array_a.transpose
 			@new_a_else_properties = @new_a_else_actions = @new_a_else_numbers 	= [] if @new_a_else_properties.nil?
+			@new_a_subbehavior_ids = behavior_a.subbehavior_ids
 			@prop_array_a = [ behavior_a.velocity_scale, 
 												behavior_a.max_speed, 
 												behavior_a.normal_speed, 
@@ -157,6 +163,7 @@ class SwarmBehavior < ActiveRecord::Base
 			@new_b_if_properties = @new_b_if_actions = @new_b_if_numbers 				= [] if @new_b_if_properties.nil?
 			@new_b_else_properties, @new_b_else_actions, @new_b_else_numbers 		= @else_array_b.transpose
 			@new_b_else_properties = @new_b_else_actions = @new_b_else_numbers 	= [] if @new_b_else_properties.nil?
+			@new_b_subbehavior_ids = behavior_b.subbehavior_ids
 			@prop_array_b = [ behavior_b.velocity_scale, 
 												behavior_b.max_speed, 
 												behavior_b.normal_speed, 
@@ -248,6 +255,7 @@ class SwarmBehavior < ActiveRecord::Base
 																									property_b_id:						@new_a_property_b,
 																									random_property_b:				@new_a_rand_property_b,
 																									depth_level:							0,
+																									subbehavior_ids:					@new_a_subbehavior_ids,
 																									if_property_ids: 					@new_a_if_properties.join(",")	|| "",
 																									if_action_ids: 						@new_a_if_actions.join(",")			|| "",
 																									if_number_bank:						@new_a_if_numbers.join(",")			|| "",
@@ -269,6 +277,7 @@ class SwarmBehavior < ActiveRecord::Base
 																									property_b_id:						@new_b_property_b,
 																									random_property_b:				@new_b_rand_property_b,
 																									depth_level:							0,
+																									subbehavior_ids:					@new_b_subbehavior_ids,
 																									if_property_ids: 					@new_b_if_properties.join(",")	|| "",
 																									if_action_ids: 						@new_b_if_actions.join(",")			|| "",
 																									if_number_bank:						@new_b_if_numbers.join(",")			|| "",
@@ -348,5 +357,13 @@ class SwarmBehavior < ActiveRecord::Base
 			behavior.save
 		end
 		return behaviors
+	end
+
+	def find_all_subbehaviors
+		if !self.subbehavior_ids.nil?
+			return [self, SwarmBehavior.find(self.subbehavior_ids).find_all_subbehaviors].flatten 
+		else
+			return [self]
+		end
 	end
 end

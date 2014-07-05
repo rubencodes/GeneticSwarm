@@ -4,32 +4,34 @@
 <% if !@user %>
 	<h2>Welcome!</h2>
 <% else %>
-	<h2>Welcome, <%= @user.firstname =%>!</h2>
-	<p>Your next Swarm ID is: <%= @swarm.id =%></p>
-	<p>Please reopen the MusicSwarm Java Applet, watch the animation, and rate its visual appeal.</p><br><br>
-	<%= form_for @swarm, url: {:action => "update", :controller => "swarm_behaviors", :id => @swarm.id}, html: {:class => "form-inline", :method => "patch"} do |f| %>
-		<div class="form-group">
-			<%= f.radio_button(:rating, 1) %>
-			<%= label_tag(:rating_1, "1") %>&nbsp;
-			<%= f.radio_button(:rating, 2) %>
-			<%= label_tag(:rating_2, "2") %>&nbsp;
-			<%= f.radio_button(:rating, 3) %>
-			<%= label_tag(:rating_3, "3") %>&nbsp;
-			<%= f.radio_button(:rating, 4) %>
-			<%= label_tag(:rating_4, "4") %>&nbsp;
-			<%= f.radio_button(:rating, 5) %>
-			<%= label_tag(:rating_5, "5") %>&nbsp;
-			<%= f.radio_button(:rating, 6) %>
-			<%= label_tag(:rating_6, "6") %>&nbsp;
-			<%= f.radio_button(:rating, 7) %>
-			<%= label_tag(:rating_7, "7") %>&nbsp;
-			<%= f.radio_button(:rating, 8) %>
-			<%= label_tag(:rating_8, "8") %>&nbsp;
-			<%= f.radio_button(:rating, 9) %>
-			<%= label_tag(:rating_9, "9") %>&nbsp;
-			<%= f.radio_button(:rating, 10) %>
-			<%= label_tag(:rating_10, "10") %>
-		</div><br><br>
-		<button type="submit" class="btn btn-primary">Rate</button>
-	<% end %>
+	<section id="mainbody" class="text-center">
+		<h2>Welcome, <%= @user.firstname =%>!</h2>
+		<p>Your next Swarm ID is: <%= @swarm.id =%></p>
+		<p>Please reopen the MusicSwarm Java Applet, watch the animation, and rate its visual appeal.</p><br><br>
+		<%= form_for @swarm, url: {:action => "update", :controller => "swarm_behaviors", :id => @swarm.id}, html: {:class => "form-inline", :method => "patch"} do |f| %>
+			<div class="form-group">
+				<%= f.radio_button(:rating, 1) %>
+				<%= label_tag(:rating_1, "1") %>&nbsp;
+				<%= f.radio_button(:rating, 2) %>
+				<%= label_tag(:rating_2, "2") %>&nbsp;
+				<%= f.radio_button(:rating, 3) %>
+				<%= label_tag(:rating_3, "3") %>&nbsp;
+				<%= f.radio_button(:rating, 4) %>
+				<%= label_tag(:rating_4, "4") %>&nbsp;
+				<%= f.radio_button(:rating, 5) %>
+				<%= label_tag(:rating_5, "5") %>&nbsp;
+				<%= f.radio_button(:rating, 6) %>
+				<%= label_tag(:rating_6, "6") %>&nbsp;
+				<%= f.radio_button(:rating, 7) %>
+				<%= label_tag(:rating_7, "7") %>&nbsp;
+				<%= f.radio_button(:rating, 8) %>
+				<%= label_tag(:rating_8, "8") %>&nbsp;
+				<%= f.radio_button(:rating, 9) %>
+				<%= label_tag(:rating_9, "9") %>&nbsp;
+				<%= f.radio_button(:rating, 10) %>
+				<%= label_tag(:rating_10, "10") %>
+			</div><br><br>
+			<button type="submit" class="btn btn-primary">Rate</button>
+		<% end %>
+	</section>
 <% end %>

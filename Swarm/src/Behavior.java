@@ -17,6 +17,8 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 public class Behavior {
     private int comparatorId;         					//ID of comparator; chooses between >, <, or ==
     private int propertyA;	         					//ID of variable used in if()
@@ -59,10 +61,12 @@ public class Behavior {
 		} catch (MalformedURLException e3) {
 			e3.printStackTrace();
 		}
+		JsonArray behavior_array = null;
 		JsonObject behavior = null;
 		try (InputStream is = url.openStream();
 				JsonReader rdr = Json.createReader(is)) {
-			behavior = rdr.readObject();
+			behavior_array = rdr.readArray();
+			behavior = behavior_array.getValuesAs(JsonObject.class).get(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
@@ -79,7 +83,52 @@ public class Behavior {
     	ifPropertyIDs    = new Vector < Integer  > ();
     	elseActionIDs    = new Vector < Integer  > ();
     	elsePropertyIDs  = new Vector < Integer  > ();
-//    	subBehaviors     = new Vector < Behavior > ();
+    	subBehaviors     = new Vector < Behavior > ();
+    	
+    	//split array by delimiter, convert to array of integers, and convert array to vector
+    	for(String actionVarID : behavior.getString("if_property_ids").split(","))
+    		if(!actionVarID.equals(""))
+    			ifPropertyIDs.add(Integer.parseInt(actionVarID));
+    	for(String actionID : behavior.getString("if_action_ids").split(","))
+    		if(!actionID.equals(""))
+    			ifActionIDs.add(Integer.parseInt(actionID));
+    	for(String nullActionVarID : behavior.getString("else_property_ids").split(","))
+    		if(!nullActionVarID.equals(""))
+    			elsePropertyIDs.add(Integer.parseInt(nullActionVarID));
+    	for(String nullActionID : behavior.getString("else_action_ids").split(","))
+    		if(!nullActionID.equals(""))
+    			elseActionIDs.add(Integer.parseInt(nullActionID));
+		
+		velocityScale      = Float.parseFloat(behavior.getString("velocity_scale"));
+		maxSpeed           = Float.parseFloat(behavior.getString("max_speed"));
+		normalSpeed    	   = Float.parseFloat(behavior.getString("normal_speed"));
+		neighborhoodRadius = Float.parseFloat(behavior.getString("neighborhood_radius"));
+		separationWeight   = Float.parseFloat(behavior.getString("separation_weight"));
+		alignmentWeight    = Float.parseFloat(behavior.getString("alignment_weight"));
+		cohesionWeight     = Float.parseFloat(behavior.getString("cohesion_weight"));
+		pacekeepingWeight  = Float.parseFloat(behavior.getString("pacekeeping_weight"));
+		motionProbability  = Float.parseFloat(behavior.getString("rand_motion_probability"));
+		
+		for(int i = 1; i < behavior_array.getValuesAs(JsonObject.class).size(); i++) {
+			JsonObject subBehavior = behavior_array.getValuesAs(JsonObject.class).get(i);
+			subBehaviors.add(new Behavior(subBehavior));
+		}
+    }
+    
+    public Behavior(JsonObject behavior) {
+    	System.out.println("SubBehavior Read: "+behavior.toString());
+    	comparatorId    = behavior.getInt("comparator_id");
+    	propertyA      	= behavior.getInt("property_a_id");
+    	randomPropertyB = behavior.getBoolean("random_property_b");
+    	propertyB       = behavior.getInt("property_b_id");
+    	depthLevel      = behavior.getInt("depth_level");
+    	
+    	//create new vectors for behavior
+    	ifActionIDs      = new Vector < Integer  > ();
+    	ifPropertyIDs    = new Vector < Integer  > ();
+    	elseActionIDs    = new Vector < Integer  > ();
+    	elsePropertyIDs  = new Vector < Integer  > ();
+    	subBehaviors     = new Vector < Behavior > ();
     	
     	//split array by delimiter, convert to array of integers, and convert array to vector
     	for(String actionVarID : behavior.getString("if_property_ids").split(","))
@@ -105,7 +154,7 @@ public class Behavior {
 		pacekeepingWeight  = Float.parseFloat(behavior.getString("pacekeeping_weight"));
 		motionProbability  = Float.parseFloat(behavior.getString("rand_motion_probability"));
     }
-     
+    
     //executes Behavior on a boid
     public void execute(Boid boid) {
     	this.boid = boid;	//sets boid to act upon
@@ -118,8 +167,8 @@ public class Behavior {
     		    actionBank(elseActionIDs.get(i), elsePropertyIDs.get(i), 1);
      
     	//execute any sub-behaviors
-//    	for (int i = 0; i < subBehaviors.size(); i++)
-//    	    subBehaviors.get(i).execute(boid);
+    	for (int i = 0; i < subBehaviors.size(); i++)
+    	    subBehaviors.get(i).execute(boid);
     }
      
         //makes a comparison between two variables
