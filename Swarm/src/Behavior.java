@@ -64,7 +64,6 @@ public class Behavior {
 				JsonReader rdr = Json.createReader(is)) {
 			behavior = rdr.readObject();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 
@@ -80,7 +79,7 @@ public class Behavior {
     	ifPropertyIDs    = new Vector < Integer  > ();
     	elseActionIDs    = new Vector < Integer  > ();
     	elsePropertyIDs  = new Vector < Integer  > ();
-    	subBehaviors     = new Vector < Behavior > ();
+//    	subBehaviors     = new Vector < Behavior > ();
     	
     	//split array by delimiter, convert to array of integers, and convert array to vector
     	for(String actionVarID : behavior.getString("if_property_ids").split(","))
@@ -106,81 +105,6 @@ public class Behavior {
 		pacekeepingWeight  = Float.parseFloat(behavior.getString("pacekeeping_weight"));
 		motionProbability  = Float.parseFloat(behavior.getString("rand_motion_probability"));
     }
-    
-//    public Behavior(int depthLevel) {
-//    	//store behavior properties locally             
-//    	this.depthLevel = depthLevel;
-//     
-//    	//create comparison
-//    	comparatorId    = r.nextInt(3);	//choose comparator
-//    	propertyA      = r.nextInt(12);	//choose variable 1
-//    	randomPropertyB   = r.nextBoolean();	//compare to random or variable?
-//    	if (randomPropertyB) propertyB = propertyA;	//if random, set to same range as variable
-//    	else propertyB  = r.nextInt(12);	//else, choose another variable
-//     
-//    	//create new vectors for behavior
-//    	ifActionIDs           = new Vector < Integer > ();
-//    	ifPropertyIDs   = new Vector < Integer > ();
-//    	elseActionIDs       = new Vector < Integer > ();
-//    	elsePropertyIDs = new Vector < Integer > ();
-//    	subBehaviors        = new Vector < Behavior > ();
-//     
-//    	//populate actions
-//    	int behaviorSize = r.nextInt(ALL_VARS_COUNT);	//choose random behavior size not to exceed number of vars
-//    	for (int l = 0; l < behaviorSize; l++) {
-//    	    ifActionIDs.add(r.nextInt(ALL_ACTIONS_COUNT));	//choose an action at random
-//    	    int actionVarID = r.nextInt(ALL_VARS_COUNT);	//choose random variable to act on
-//     
-//    	    //make sure variable is acted on only once
-//    	    while (ifPropertyIDs.contains(actionVarID)) {
-//    		    actionVarID = r.nextInt(ALL_VARS_COUNT);
-//    	    } 
-//          ifPropertyIDs.add(actionVarID);	//store action
-//    	}
-//     
-//    	//populate null actions
-//    	int nullBehaviorSize = r.nextInt(ALL_VARS_COUNT);	//choose random behavior size not to exceed number of vars
-//    	for (int m = 0; m < nullBehaviorSize; m++) {
-//    	    elseActionIDs.add(r.nextInt(ALL_ACTIONS_COUNT));	//choose an action at random
-//    	    int actionVarID = r.nextInt(ALL_VARS_COUNT);	//choose random variable to act on
-//     
-//    	    //make sure variable is acted on only once
-//    	    while (elsePropertyIDs.contains(actionVarID)) {
-//    		    actionVarID = r.nextInt(ALL_VARS_COUNT);
-//    	    }
-//    	    elsePropertyIDs.add(actionVarID);	//store action
-//    	}
-//     
-//    	//generate numbers in correct range to 
-//    	numberBank = new Vector < Float > ();
-//    	for (int n = 0; n < numberBank.size(); n++)
-//    	    numberBank.add(varBank(ifActionIDs.get(n), true));
-//     
-//    	nullNumberBank = new Vector < Float > ();
-//    	for (int n = 0; n < nullNumberBank.size(); n++)
-//    	    nullNumberBank.add(varBank(elseActionIDs.get(n), true));
-//     
-//    	//up to a particular depth and width, generate sub-behaviors
-//    	double depthProbability = (double) MAX_BEHAVIOR_DEPTH - depthLevel / MAX_BEHAVIOR_DEPTH;
-//    	if (depthProbability > r.nextDouble()) {
-//    	    int treeWidth = r.nextInt(3);
-//    	    for (int i = 0; i < treeWidth; i++)
-//    		    subBehaviors.add(new Behavior(depthLevel + 1));
-//    	}
-//     
-//    	velocityScale = randomInRange(0);
-//    	maxSpeed = randomInRange(1);
-//    	normalSpeed = randomInRange(2);
-//    	neighborhoodRadius = randomInRange(3);
-//    	separationWeight = randomInRange(4);
-//    	alignmentWeight = randomInRange(5);
-//    	cohesionWeight = randomInRange(6);
-//    	pacekeepingWeight = randomInRange(7);
-//    	motionProbability = randomInRange(8);
-//    	numNeighborsOwnFlock = randomInRange(9);
-//    	numNeighborsAllFlocks = randomInRange(10);
-//        printBehavior();
-//    }
      
     //executes Behavior on a boid
     public void execute(Boid boid) {
@@ -194,8 +118,8 @@ public class Behavior {
     		    actionBank(elseActionIDs.get(i), elsePropertyIDs.get(i), 1);
      
     	//execute any sub-behaviors
-    	for (int i = 0; i < subBehaviors.size(); i++)
-    	    subBehaviors.get(i).execute(boid);
+//    	for (int i = 0; i < subBehaviors.size(); i++)
+//    	    subBehaviors.get(i).execute(boid);
     }
      
         //makes a comparison between two variables
@@ -216,57 +140,6 @@ public class Behavior {
     	}
     	return false;
     }
-     
-    //returns an appropriate random for use with a particular variable
-//    public float randomInRange(int ID) {
-//    	switch (ID) {
-//    	case 0:
-//    	    //random possible velocity scale
-//    	    float velocityScale = r.nextFloat() / 10;
-//    	    return velocityScale;
-//    	case 1:
-//    	    //random possible max speed
-//    	    float maxSpeed = r.nextInt(9) + 2;
-//    	    return maxSpeed;
-//    	case 2:
-//    	    //random possible normal speed
-//    	    float normalSpeed = r.nextInt(9) + 1;
-//    	    return normalSpeed;
-//    	case 3:
-//    	    //random possible neighborhood radius
-//    	    float neighborhoodRadius = (float) r.nextInt(91) + 10;
-//    	    return neighborhoodRadius;
-//    	case 4:
-//    	    //random possible separation weight
-//    	    float separationWeight = (float) r.nextInt(101);
-//    	    return separationWeight;
-//    	case 5:
-//    	    //random possible alignment weight
-//    	    float alignmentWeight = r.nextFloat();
-//    	    return alignmentWeight;
-//    	case 6:
-//    	    //random possible cohesion weight
-//    	    float cohesionWeight = r.nextFloat();
-//    	    return cohesionWeight;
-//    	case 7:
-//    	    //random possible pacekeeping weight
-//    	    float pacekeepingWeight = r.nextFloat();
-//    	    return pacekeepingWeight;
-//    	case 8:
-//    	    //random possible motion probability
-//    	    float motionProbability = r.nextFloat() / 2;
-//    	    return motionProbability;
-//    	case 9:
-//    	    //random possible num neighbors own flock
-//    	    float numNeighborsOwnFlock = r.nextInt((int) varBank(10, false));
-//    	    return numNeighborsOwnFlock;
-//    	case 10:
-//    	    //random possible num neighbors own flock
-//    	    float numNeighborsAllFlocks = r.nextInt((int) varBank(11, false));
-//    	    return numNeighborsAllFlocks;
-//    	}
-//    	return 0;
-//    }
 
     //bank containing variables, integers, and randoms
     public float varBank(int ID, boolean rand) {
@@ -492,7 +365,6 @@ public class Behavior {
       }
       System.out.println("}");
     }
-    
     
     //getters and setters
     public int getScore() {

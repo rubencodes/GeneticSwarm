@@ -179,9 +179,7 @@ public class MusicSwarm extends PApplet {
 		oscP5.plug(this,"setMortality", "/mortality");
 		oscP5.plug(this,"setWindVector", "/windVector");
 		oscP5.plug(this,"setCameraMove", "/camMove");
-		oscP5.plug(this,"setAddNewBoid", "/newBoidSource");
-		
-		
+		oscP5.plug(this,"setAddNewBoid", "/newBoidSource");		
 		timeStep = 0;
 		
 		JTextField username = new JTextField(10);
@@ -202,7 +200,6 @@ public class MusicSwarm extends PApplet {
 	    	        return new PasswordAuthentication (username.getText(), password.getText().toCharArray());
 	    	    }
 	    	});
-	    	
 			
 			// create the Flocks  
 			for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
@@ -213,10 +210,7 @@ public class MusicSwarm extends PApplet {
 
 	    }
 	}
-
 	
-	
-
 	// the "loop forever" method in processing
 	public void draw() {
 

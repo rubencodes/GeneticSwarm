@@ -17,7 +17,15 @@ class SwarmBehaviorsController < ApplicationController
   # PATCH/PUT /swarm_behaviors/1.json
   def update
 		if @swarm_behavior.update(swarm_behavior_params)
-			redirect_to :back, :flash => { :notice => "Thank you for rating your swarm!" }
+			if SwarmBehavior.get_next_swarm_behavior(session[:user_id])
+				redirect_to :back, :flash => { :notice => "Thank you for rating your swarm!" }
+			else
+				if SwarmBehavior.breed_next_generation(session[:user_id])
+					redirect_to :back, :flash => { :notice => "Evolved next generation!" }
+				else
+					redirect_to :back, :flash => { :notice => "Error during evolution!" }
+				end
+			end
 		else
 			redirect_to :back, :flash => { :notice => "Swarm could not be rated." }
 		end
