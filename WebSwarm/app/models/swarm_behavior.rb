@@ -112,10 +112,9 @@ class SwarmBehavior < ActiveRecord::Base
 		@next_generation = []
 		
 		#for every two behaviors
-		for(i = 0; i < behaviors.length; i+=2)
+		behaviors.each_with_index do | behavior_a, behavior_index |
 			#select two behaviors
-			behavior_a = behaviors[i]
-			behavior_b = behaviors[i+1]
+			behavior_b = behaviors[behavior_index+1]
 			
 			#set new behavior a defaults (copy of behavior a)
 			@new_a_comparator = behavior_a.comparator_id
@@ -221,8 +220,8 @@ class SwarmBehavior < ActiveRecord::Base
 																									property_a_id:						@new_a_property_a,
 																									property_b_id:						@new_a_property_b,
 																									if_property_ids: 					@new_a_if_properties.join(","),
-																									if_action_ids: 						@new_a_if_actions.join(",")
-																									if_number_bank:						@new_a_if_numbers.join(",")
+																									if_action_ids: 						@new_a_if_actions.join(","),
+																									if_number_bank:						@new_a_if_numbers.join(","),
 																									velocity_scale:						@prop_array_a[0],
 																									max_speed:								@prop_array_a[1],
 																									normal_speed:							@prop_array_a[2],
@@ -237,8 +236,8 @@ class SwarmBehavior < ActiveRecord::Base
 																									property_a_id:						@new_b_property_a,
 																									property_b_id:						@new_b_property_b,
 																									if_property_ids: 					@new_b_if_properties.join(","),
-																									if_action_ids: 						@new_b_if_actions.join(",")
-																									if_number_bank:						@new_b_if_numbers.join(",")
+																									if_action_ids: 						@new_b_if_actions.join(","),
+																									if_number_bank:						@new_b_if_numbers.join(","),
 																									velocity_scale:						@prop_array_b[0],
 																									max_speed:								@prop_array_b[1],
 																									normal_speed:							@prop_array_b[2],
