@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Genetic MusicSwarm : A MusicSwarm genetic program created by Stephen Majercik, Frank Mauceri, and Ruben Martinez." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Genetic MusicSwarm</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rmartinez93/GeneticSwarm">View on GitHub</a>
+
+          <h1 id="project_title">Genetic MusicSwarm</h1>
+          <h2 id="project_tagline">A MusicSwarm genetic program created by Stephen Majercik, Frank Mauceri, and Ruben Martinez.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/rmartinez93/GeneticSwarm/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/rmartinez93/GeneticSwarm/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="genetic-musicswarm" class="anchor" href="#genetic-musicswarm"><span class="octicon octicon-link"></span></a>Genetic MusicSwarm</h1>
+
+<p>A project by Steve Majercik, Frank Mauceri, and Ruben Martinez</p>
+
+<p><strong>This is a swarm genetically programmed to evolve interesting behaviors. It 
+has two parts: the Music Swarm Java applet which serves as a visualizer for 
+swarm behaviors, and the Web Swarm which is used to evaluate and evolve behaviors.</strong></p>
+
+<h2>
+<a name="web-swarm" class="anchor" href="#web-swarm"><span class="octicon octicon-link"></span></a>Web Swarm</h2>
+
+<p>The <strong>Web Swarm</strong> is a Ruby on Rails application with a minimal user interface. 
+The UI is only used for creating accounts, logging in, and evaluating swarms.
+Each new user account causes the creation of 12 swarm behaviors. These 
+behaviors can be visualized by the <strong>MusicSwarm</strong> (which interacts with the 
+<strong>Web Swarm</strong>'s JSON API), and evaluated on their visual appeal through the 
+web UI.</p>
+
+<p>On the backend, the <strong>Web Swarm</strong> collects these evaluations, and when all 12 
+initial swarms have been evaluated, it begins the process of evolving the next 
+generation. To do this, the <strong>Web Swarm</strong> first puts the 12 behaviors 
+through <em>Selection</em>. Specifically, they are put through a tournament select 
+based on their fitness (as evaluated per the user). The 6 behaviors that are 
+chosen as best automatically survive to the next generation, and are also 
+brought to the next phase, <em>Crossover</em>. In <em>Crossover</em>, two behaviors at a 
+time are chosen to mate with each other and are both "split" at single points.
+Parts of Behavior A end up in Behavior B, and vice-versa. From this process,
+another 6 individuals arise for the next generation, resulting in a total of
+12 individuals once again. Finally, <em>mutation</em>. During <em>mutation</em>, each of a
+swarm's properties can be, with a low probability, be randomly replaced with 
+something else. After <em>mutation</em>, the 12 new behaviors are assigned to the 
+owner of the original 12, and the process repeats itself.</p>
+
+<h2>
+<a name="musicswarm" class="anchor" href="#musicswarm"><span class="octicon octicon-link"></span></a>MusicSwarm</h2>
+
+<p>The <strong>MusicSwarm</strong> runs independently of the <strong>Web Swarm</strong>. It is a Java 
+applet that serves to visualize swarm behaviors created by the <strong>Web 
+Swarm</strong>. In order to visualize behaviors, first you must create an account 
+on the <strong>Web Swarm</strong> UI, run the Applet, and enter your <strong>Web Swarm</strong>
+credentials when prompted by the Applet.A swarm behavior is then retrieved 
+from the <strong>Web Swarm</strong>'s JSON API using the Java JSON Processing Library. 
+The behavior JSON is translated into a set of conditional statements that 
+affect the way the swarm moves around by setting limits on its movements 
+and controlling some of the swarm's properties.</p>
+
+<h2>
+<a name="current-limitations" class="anchor" href="#current-limitations"><span class="octicon octicon-link"></span></a>Current Limitations</h2>
+
+<ul>
+<li><p>While the current genetic program's Crossover function is functional, it is
+limited in that it cannot yet crossover sub-behaviors. That is, each swarm
+behavior can have a set of subbehaviors, and these are currently transferred 
+directly from parent to offspring, and are immune to Crossover and Mutation.</p></li>
+<li><p>Every time you evaluate a behavior on the <strong>Web Swarm</strong> interface, you are
+presented with the next behavior to evaluate. Currently, you must close and
+re-run the <strong>MusicSwarm</strong> after every evaluation in order to have it take 
+on the next behavior's properties.</p></li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Genetic MusicSwarm maintained by <a href="https://github.com/rmartinez93">rmartinez93</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
