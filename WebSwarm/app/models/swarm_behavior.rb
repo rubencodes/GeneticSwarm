@@ -42,7 +42,7 @@ class SwarmBehavior < ActiveRecord::Base
 			self.pacekeeping_weight				= random_in_range 7
 			self.rand_motion_probability	= random_in_range 8
 
-			if rand(2).zero? && self.depthlevel < 3
+			if rand(2).zero? && self.depth_level < 3
 				@sub = SwarmBehavior.create(depth_level: self.depth_level+1)
 				self.subbehavior_ids = @sub.id
 			end
