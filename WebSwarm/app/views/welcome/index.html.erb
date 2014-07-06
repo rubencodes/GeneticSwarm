@@ -5,46 +5,49 @@
 	<h2>Welcome!</h2>
 	<p>If you're new here, Sign Up at the link above and then download the latest version of our Java Applet.</p>
 <% else %>
-	<section id="mainbody" class="text-center">
-		<h2>Welcome, <%= @user.firstname =%>!</h2>
-		<p>This swarm is named <%= @swarm.name =%>.</p>
-		<p>Please (re)open the Swarm Java Applet, watch <%= @swarm.name =%>, and rate their visual appeal.</p><br><br>
-		<%= form_for @swarm, url: {:action => "update", :controller => "swarm_behaviors", :id => @swarm.id}, html: {:class => "form-inline", :method => "patch"} do |f| %>
-			<div class="form-group">
-				<div class="btn-group" data-toggle="buttons">
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 1) %> (Worst) 1
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 2) %> 2
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 3) %> 3
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 4) %> 4
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 5) %> 5
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 6) %> 6
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 7) %> 7
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 8) %> 8
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 9) %> 9
-					</label>
-					<label class="btn btn-primary">
-						<%= f.radio_button(:rating, 10) %> 10 (Best)
-					</label>
-				</div>
-			</div><br><br>
-			<button type="submit" class="btn btn-danger">Rate</button>
-		<% end %>
-	</section>
+	<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<h2>Welcome, <%= @user.firstname =%>!</h2>
+				<h3 style="color:#d43f3a">This swarm is named <%= @swarm.name =%>.</h3>
+				<p>Please (re)open the Swarm Java Applet, watch <%= @swarm.name =%>'s behavior, and rate their visual appeal.</p><br><br>
+				<%= form_for @swarm, url: {:action => "update", :controller => "swarm_behaviors", :id => @swarm.id}, html: {:class => "form-inline", :method => "patch"} do |f| %>
+					<div class="form-group">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 1, :required => true) %> (Worst) 1
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 2) %> 2
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 3) %> 3
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 4) %> 4
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 5) %> 5
+							</label>
+							<br class="visible-xs">
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 6) %> 6
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 7) %> 7
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 8) %> 8
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 9) %> 9
+							</label>
+							<label class="btn btn-primary">
+								<%= f.radio_button(:rating, 10) %> 10 (Best)
+							</label>
+						</div>
+					</div><br><br class="hidden-xs">
+					<button type="submit" class="btn btn-danger">Submit Rating</button>
+				<% end %>
+			</div>
+	</div>
 <% end %>
