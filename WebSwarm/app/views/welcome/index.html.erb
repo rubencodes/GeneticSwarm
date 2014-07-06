@@ -9,12 +9,12 @@
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<h2>Welcome, <%= @user.firstname =%>!</h2>
 				<h3 style="color:#d43f3a">This swarm is named <%= @swarm.name =%>.</h3>
-				<p>Please (re)open the Swarm Java Applet, watch <%= @swarm.name =%>'s behavior, and rate their visual appeal.</p><br><br>
+				<p>Please open the Swarm Java Applet, watch <%= @swarm.name =%>'s behavior & rate their visual appeal.</p><br><br>
 				<%= form_for @swarm, url: {:action => "update", :controller => "swarm_behaviors", :id => @swarm.id}, html: {:class => "form-inline", :method => "patch"} do |f| %>
 					<div class="form-group">
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-primary">
-								<%= f.radio_button(:rating, 1, :required => true) %> (Worst) 1
+								<%= f.radio_button(:rating, 1) %> (Worst) 1
 							</label>
 							<label class="btn btn-primary">
 								<%= f.radio_button(:rating, 2) %> 2
@@ -46,7 +46,7 @@
 							</label>
 						</div>
 					</div><br><br class="hidden-xs">
-					<button type="submit" class="btn btn-danger">Submit Rating</button>
+					<%= f.submit "Submit Rating", { :class => "btn btn-danger" } %>
 				<% end %>
 			</div>
 	</div>

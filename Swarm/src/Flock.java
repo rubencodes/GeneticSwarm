@@ -101,9 +101,6 @@ public class Flock {
 			randomMotionProbability = MusicSwarm.rand.nextFloat() / 2.0f;           // range = [0.0, 0.5]
 		}
 
-		//populate actions
-
-		
 		// create the Boids
 		for (int boidID = 0 ; boidID < numBoids; boidID++) {
 
@@ -122,7 +119,6 @@ public class Flock {
 		this.flockID = flockID;
 		this.oscP5 = oscP5;
 		this.myRemoteLocation = myRemoteLocation;
-
 	}
 
 
@@ -149,7 +145,14 @@ public class Flock {
 			
 		}
 	}
-
+	
+	void setBehavior(Behavior behavior) {
+		//change behavior in each boid in flock
+		for (int i = 0; i < backingBoids.size(); i++) {
+			Boid b = (Boid) backingBoids.get(i);  
+			b.setBehavior(behavior);
+		}
+	}
 
 	
 	// sets the flock size; can be larger or smaller than current size

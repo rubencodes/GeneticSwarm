@@ -1592,6 +1592,10 @@ public class Boid {
 	}
 	
 	// setters
+	void setBehavior(Behavior b){    
+		this.b = b;
+	}
+	
 	void setVelocityScale(float velocityScale){    
 		this.velocityScale = velocityScale;
 	}
