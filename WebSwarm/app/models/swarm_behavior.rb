@@ -74,8 +74,7 @@ class SwarmBehavior < ActiveRecord::Base
 	end
 	
 	def self.get_next_swarm_behavior(user_id)
-		@swarm_behaviors 	= User.find_by(id: user_id).swarm_behaviors
-		@swarm_behavior		= @swarm_behaviors.where(rating: 0).order(:created_at).first
+		@swarm_behavior 	= User.find_by(id: user_id).swarm_behaviors.where(rating: 0).order(:created_at).last(12)[0]
 		if !@swarm_behavior.nil?
 			return @swarm_behavior
 		else
@@ -85,7 +84,7 @@ class SwarmBehavior < ActiveRecord::Base
 	
 	def self.breed_next_generation(user_id)
 		@user							= User.find_by(id: user_id)
-		@swarm_behaviors 	= @user.swarm_behaviors
+		@swarm_behaviors 	= @user.swarm_behaviors.order(:created_at).last(12)
 		@TheChosenOnes 		= SwarmBehavior.selection(@swarm_behaviors)
 		@NextGeneration		= SwarmBehavior.crossover(@TheChosenOnes)
 		@NewPopulation		= SwarmBehavior.mutation (@NextGeneration)

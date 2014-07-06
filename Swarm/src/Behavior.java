@@ -1,23 +1,13 @@
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.Authenticator;
 import java.net.MalformedURLException;
-import java.net.PasswordAuthentication;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Vector;
-
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class Behavior {
     private int comparatorId;         					//ID of comparator; chooses between >, <, or ==

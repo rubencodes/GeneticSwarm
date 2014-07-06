@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
 			self.swarm_behaviors << SwarmBehavior.create
 		}
 	end
+	def start_over
+		12.times {
+			self.swarm_behaviors << SwarmBehavior.create
+		}
+	end
 end
