@@ -19544,3 +19544,29 @@ Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-07-05 18:46:49 -05
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-05 18:46:49 -0500
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 20:08:19 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+Filter chain halted as :set_next_swarm_behavior rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+  [1m[36mUser Load (8.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/swarm_behaviors/next.json" for 127.0.0.1 at 2014-07-05 20:09:24 -0500
+Processing by SwarmBehaviorsController#show as JSON
+  Parameters: {"id"=>"next"}
+  [1m[36mUser Load (3.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'rmartin@bowdoin.edu' AND "users"."password" = '1029rox*' LIMIT 1[0m
+  [1m[35mSwarmBehavior Load (5.2ms)[0m  SELECT "swarm_behaviors".* FROM "swarm_behaviors" WHERE "swarm_behaviors"."id" = $1 LIMIT 1  [["id", 149]]
+Completed 404 Not Found in 51ms
+
+ActiveRecord::RecordNotFound (Couldn't find SwarmBehavior with id=149):
+  app/controllers/swarm_behaviors_controller.rb:52:in `block in set_next_swarm_behavior'
+  app/controllers/swarm_behaviors_controller.rb:49:in `set_next_swarm_behavior'
+
+
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/ruben/.rvm/gems/ruby-2.0.0-p451@global/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.7ms)

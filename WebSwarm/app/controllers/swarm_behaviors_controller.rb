@@ -49,7 +49,7 @@ class SwarmBehaviorsController < ApplicationController
 				authenticate_or_request_with_http_basic('WebSwarm') do |email, password|
 					if @user = User.find_by(username: email, password: password)
 						session[:user_id] = @user.id
-						@swarm_behaviors = SwarmBehavior.find(149).find_all_subbehaviors
+						@swarm_behaviors = SwarmBehavior.get_next_swarm_behavior(session[:user_id]).find_all_subbehaviors
 					end
 				end
 			end

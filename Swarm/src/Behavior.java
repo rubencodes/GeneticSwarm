@@ -57,7 +57,7 @@ public class Behavior {
     public Behavior() {
     	URL url = null;
 		try {
-			url = new URL("http://http://webswarm.herokuapp.com/swarm_behaviors/next.json");
+			url = new URL("http://webswarm.herokuapp.com/swarm_behaviors/next.json");
 		} catch (MalformedURLException e3) {
 			e3.printStackTrace();
 		}
