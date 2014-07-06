@@ -240,11 +240,10 @@ class SwarmBehavior < ActiveRecord::Base
 				
 				when 2 #crosses over at property values
 					puts "Crossover at props"
-					point_a = rand(@prop_array_a.length)
-					point_b = rand(@prop_array_b.length)
+					point = rand(@prop_array_a.length)
 				
-					a_props_to_crossover = @prop_array_a.slice!(point_a..-1)
-					b_props_to_crossover = @prop_array_b.slice!(point_b..-1)
+					a_props_to_crossover = @prop_array_a.slice!(point..-1)
+					b_props_to_crossover = @prop_array_b.slice!(0..point-1)
 				
 					@prop_array_a.concat(b_props_to_crossover)
 					@prop_array_b.concat(a_props_to_crossover)
