@@ -141,6 +141,7 @@ public class MusicSwarm extends PApplet {
 	// for delimiting behaviors over time
 	public static int timeStep = 0;
 	
+	public int buttonColor = 209;
 	// setting up the simulation
 	public void setup() {
 
@@ -187,74 +188,36 @@ public class MusicSwarm extends PApplet {
 		oscP5.plug(this,"setAddNewBoid", "/newBoidSource");		
 		timeStep = 0;
 
-		String[] savedCredentials = readCredentials();
-		if(savedCredentials[0] == "" && savedCredentials[1] == "") {
-			JTextField usernameField = new JTextField(10);
-			JTextField passwordField = new JPasswordField(10);
-		  	JCheckBox check = new JCheckBox("Remember Me");
-		
-		  	JPanel myPanel = new JPanel();
-		  	myPanel.add(new JLabel("Email:"));
-		  	myPanel.add(usernameField);
-		  	myPanel.add(Box.createHorizontalStrut(5)); // a spacer
-		  	myPanel.add(new JLabel("Password:"));
-		  	myPanel.add(passwordField);
-		  	myPanel.add(check);
-		  	int result = JOptionPane.showConfirmDialog(null, myPanel, 
-		           "Enter your WebSwarm Email & Password.", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-		  	if(result == JOptionPane.OK_OPTION && check.isSelected()) {
-				writeCredentials(usernameField.getText(), passwordField.getText());
-			  	savedCredentials = readCredentials();
-		  	} else {
-		  		savedCredentials[0] = usernameField.getText();
-		  		savedCredentials[1] = passwordField.getText();
-		  	}
-		}
-
-		String username = savedCredentials[0];
-		String password = savedCredentials[1];
-		
-	 	Authenticator.setDefault (new Authenticator() {
-		    protected PasswordAuthentication getPasswordAuthentication() {
-		        return new PasswordAuthentication (username, password.toCharArray());
-		    }
-		});
-	 	
-		// create the Flocks  
-		for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
-			int flockSize = useDefaultFlockSize? defaultFlockSize: nonDefaultInitialFlockSizes[flockID];
-			allFlocks[flockID] = 
-				new Flock(flockID, flockSize, flockType, this, oscP5, myRemoteLocation, new Behavior());
-		}
-	}
+		JTextField usernameField = new JTextField(10);
+		JTextField passwordField = new JPasswordField(10);
 	
-	public void writeCredentials(String username, String password) {
-		Writer writer = null;
-		try {
-			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("credentials.txt"), "utf-8"));
-			writer.write(username+"\n"+password);
-		} catch (IOException ex) {
+	  	JPanel myPanel = new JPanel();
+	  	myPanel.add(new JLabel("Email:"));
+	  	myPanel.add(usernameField);
+	  	myPanel.add(Box.createHorizontalStrut(5)); // a spacer
+	  	myPanel.add(new JLabel("Password:"));
+	  	myPanel.add(passwordField);
+	  	int result = JOptionPane.showConfirmDialog(null, myPanel, 
+	           "Enter your WebSwarm Email & Password.", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+	  	if(result == JOptionPane.OK_OPTION) {	  		
+			String username = usernameField.getText();
+			String password = passwordField.getText();
 			
-		} finally {
-		   try {writer.close();} catch (Exception ex) {}
-		}
-	}
-	
-	public String[] readCredentials() {
-		String [] credentials = { "", "" };
-		try (BufferedReader br = new BufferedReader(new FileReader("credentials.txt"))) {
-			String username, password;
-			if ((username = br.readLine()) != null && (password = br.readLine()) != null) {
-				credentials[0] = username;
-				credentials[1] = password;
+		 	Authenticator.setDefault (new Authenticator() {
+			    protected PasswordAuthentication getPasswordAuthentication() {
+			        return new PasswordAuthentication (username, password.toCharArray());
+			    }
+			});
+
+			// create the Flocks  
+			for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
+				int flockSize = useDefaultFlockSize? defaultFlockSize: nonDefaultInitialFlockSizes[flockID];
+				allFlocks[flockID] = 
+					new Flock(flockID, flockSize, flockType, this, oscP5, myRemoteLocation, new Behavior());
 			}
-		} catch (IOException e) {
-			return credentials;
-		}
-		return credentials;
+	  	}
 	}
 	
-	int buttonColor = 209;
 	// the "loop forever" method in processing
 	public void draw() {
 		++timeStep;
