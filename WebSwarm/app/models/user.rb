@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	before_create :generate_initial_behaviors
 	
 	def self.authenticate(email="", password="")
-		user = User.find_by(username: email)
+		user = User.find_by(username: email, password: password)
 		if !user.nil?
 			return user
 		end
