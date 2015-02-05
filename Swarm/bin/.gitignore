@@ -1,11 +1,7 @@
-/.DS_Store
+/netP5/
+/oscP5/
 /Behavior.class
 /Boid.class
 /Flock.class
-/MusicSwarm.class
-/netP5/
-/oscP5/
-/Behavior$1.class
 /MusicSwarm$1.class
-/TrippleDes.class
-/Encryption.class
+/MusicSwarm.class

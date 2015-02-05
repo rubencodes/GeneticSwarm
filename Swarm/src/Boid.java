@@ -1283,7 +1283,7 @@ public class Boid {
 			myMessage.add(MusicSwarm.WINDOW_HEIGHT);     // add the height for proper y scaling
 			myMessage.add(flockID);
 			myMessage.add(otherBoid.flockID);
-			oscP5.send(myMessage, myRemoteLocation); 
+//			oscP5.send(myMessage, myRemoteLocation); 
 	}
 
 

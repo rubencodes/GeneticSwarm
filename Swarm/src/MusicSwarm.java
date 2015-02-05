@@ -48,8 +48,6 @@ import java.util.Random;
 
 import javax.swing.*;
 
-
-
 public class MusicSwarm extends PApplet { 
 
 	// ****************  PROCESSING/MAX COMMUNICATION  ******************
@@ -142,11 +140,16 @@ public class MusicSwarm extends PApplet {
 	public static int timeStep = 0;
 	
 	public int buttonColor = 209;
+	
+	public static void main(String args[]) {
+	   PApplet.main(new String[] { "--present", "MusicSwarm" });
+	}
+	
 	// setting up the simulation
 	public void setup() {
 
 		// window size and graphics mode
-		size(WINDOW_WIDTH, WINDOW_HEIGHT, P3D); 
+		size(800, 800, P3D); 
 		
 		// Processing/Max communication
 		// NOTE: for some reason that is not clear to me, this must be set up before the flocks 
@@ -154,14 +157,14 @@ public class MusicSwarm extends PApplet {
 		// 		oscP5.send(AnalysisMessage, myRemoteLocation);
 		
 		// listen for incoming messages from udpsend in Max at port 8090;
-		oscP5 = new OscP5(this,8090);
+		//oscP5 = new OscP5(this,8090);
 
 		// a NetAddress with an IP address and a port number is needed as a 
 		// parameter in oscP5.send() to send messages to Max; this NetAddress
 		// specifies that messages will be sent to port 8080, the port that 
 		// udpreceive in max is set to
 		// NOTE (5/14/13): does not seem to be used
-		myRemoteLocation = new NetAddress("127.0.0.1", 8080);
+		//myRemoteLocation = new NetAddress("127.0.0.1", 8080);
 
 		// osc plug service:
 		// osc messages with a specific address pattern can be automatically
@@ -171,21 +174,21 @@ public class MusicSwarm extends PApplet {
 		// method test takes 2 int arguments, so each message with address pattern 
 		// /flockSize and typetag ii will be forwarded to setFlockSize(int flockSize, int flockID)
 		//
-		oscP5.plug(this,"setFlockSize","/flockSize");
-		oscP5.plug(this,"setVelocityScale","/velocity");
-		oscP5.plug(this,"setMaxSpeed","/maxSpeed");
-		oscP5.plug(this,"setNormalSpeed","/normalSpeed");
-		oscP5.plug(this,"setNeighborRadius","/neighbordist");
-		oscP5.plug(this,"setSeparationWeight","/sepwt");
-		oscP5.plug(this,"setAlignWeight","/algwt");
-		oscP5.plug(this,"setCohesionWeight","/cohwt");
-		oscP5.plug(this,"setPacekeepingWeight","/pacewt");
-		oscP5.plug(this,"setRandomMotionProbability","/randmotprob");
-		oscP5.plug(this,"setProximityThreshold", "/proxThresh");
-		oscP5.plug(this,"setMortality", "/mortality");
-		oscP5.plug(this,"setWindVector", "/windVector");
-		oscP5.plug(this,"setCameraMove", "/camMove");
-		oscP5.plug(this,"setAddNewBoid", "/newBoidSource");		
+//		oscP5.plug(this,"setFlockSize","/flockSize");
+//		oscP5.plug(this,"setVelocityScale","/velocity");
+//		oscP5.plug(this,"setMaxSpeed","/maxSpeed");
+//		oscP5.plug(this,"setNormalSpeed","/normalSpeed");
+//		oscP5.plug(this,"setNeighborRadius","/neighbordist");
+//		oscP5.plug(this,"setSeparationWeight","/sepwt");
+//		oscP5.plug(this,"setAlignWeight","/algwt");
+//		oscP5.plug(this,"setCohesionWeight","/cohwt");
+//		oscP5.plug(this,"setPacekeepingWeight","/pacewt");
+//		oscP5.plug(this,"setRandomMotionProbability","/randmotprob");
+//		oscP5.plug(this,"setProximityThreshold", "/proxThresh");
+//		oscP5.plug(this,"setMortality", "/mortality");
+//		oscP5.plug(this,"setWindVector", "/windVector");
+//		oscP5.plug(this,"setCameraMove", "/camMove");
+//		oscP5.plug(this,"setAddNewBoid", "/newBoidSource");		
 		timeStep = 0;
 
 		JTextField usernameField = new JTextField(10);

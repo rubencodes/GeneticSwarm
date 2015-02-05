@@ -307,7 +307,7 @@ public class Flock {
 			AnalysisMessage.add(velocityMagnitudeMean);
 			AnalysisMessage.add(velocityMagnitudeDeviation);
 
-			oscP5.send(AnalysisMessage, myRemoteLocation); 
+//			oscP5.send(AnalysisMessage, myRemoteLocation); 
 
 		}
 
