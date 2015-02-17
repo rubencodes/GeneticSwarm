@@ -21,7 +21,7 @@
           var parameters = { 
             image: 'loading.gif',
             centerimage: 'true',
-						behavior: "<%= @swarm.to_json.gsub('"', '\'') =%>",
+						behavior: "<%= @swarm_behaviors.to_json.gsub('"', '\'') =%>",
           };
           var version = '1.5';
           deployJava.runApplet(attributes, parameters, version);
