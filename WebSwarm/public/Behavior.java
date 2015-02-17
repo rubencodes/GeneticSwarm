@@ -48,7 +48,6 @@ public class Behavior {
     JsonObject behavior = null;
     try {
       JsonReader rdr = Json.createReader(new StringReader(jsonBehavior));
-      System.out.println("TEST");
       behavior_array = rdr.readArray();
       behavior = behavior_array.getValuesAs(JsonObject.class).get(0);
     } 

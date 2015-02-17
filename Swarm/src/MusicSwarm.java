@@ -40,9 +40,9 @@ public class MusicSwarm extends PApplet {
 	// ****************  GRAPHICS  ******************
 
 	// window dimensions
-	public static final int WINDOW_WIDTH = 800;
-	public static final int WINDOW_HEIGHT = 800;
-	public static final int WINDOW_DEPTH = 800;
+	public static final int WINDOW_WIDTH = 400;
+	public static final int WINDOW_HEIGHT = 400;
+	public static final int WINDOW_DEPTH = 400;
 
 	// number of dimensions in rendering 
 	public static final int RENDER_2D = 1;
@@ -54,7 +54,7 @@ public class MusicSwarm extends PApplet {
 	private static final float SCALE_DOWN_YAW_RATE_OF_CHANGE= 0.05f;
 	private static final float SCALE_DOWN_PITCH_RATE_OF_CHANGE= 0.05f;
 	// to set zoom scale and range
-	private static final int ZOOM_SCALING_FACTOR = 50;
+	private static final int ZOOM_SCALING_FACTOR = 0;
 	private static final int ZOOM_RANGE = 10;
 	// accept messages from Max that control camera movement
 	private float pitch;  //rotate around X
@@ -149,7 +149,7 @@ public class MusicSwarm extends PApplet {
 		
 		// set the camera point of view
 		float zoomZ = (zoom - ZOOM_SCALING_FACTOR) * ZOOM_RANGE;
-		translate(WINDOW_WIDTH/4,WINDOW_HEIGHT/4,zoomZ);
+		translate(0, 0,zoomZ);
 		rotateY(yaw * SCALE_DOWN_YAW_RATE_OF_CHANGE);
 		rotateX(pitch * SCALE_DOWN_PITCH_RATE_OF_CHANGE);
 		// draw the cube defining the flock space

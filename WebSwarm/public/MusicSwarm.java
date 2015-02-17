@@ -62,9 +62,9 @@ public boolean insideButton = false;
 // ****************  GRAPHICS  ******************
 
 // window dimensions
-public static final int WINDOW_WIDTH = 800;
-public static final int WINDOW_HEIGHT = 800;
-public static final int WINDOW_DEPTH = 800;
+public static final int WINDOW_WIDTH = 400;
+public static final int WINDOW_HEIGHT = 400;
+public static final int WINDOW_DEPTH = 400;
 
 // number of dimensions in rendering 
 public static final int RENDER_2D = 1;
@@ -176,7 +176,6 @@ public static void main(String args[]) {
 //
 public void run() {
   behaviorString = getParameter("behavior").replaceAll("'", "\"");
-  System.out.println(behaviorString);
   super.run();
 }
 
@@ -204,7 +203,7 @@ public void draw() {
 
   // set the camera point of view
   float zoomZ = (zoom - ZOOM_SCALING_FACTOR) * ZOOM_RANGE;
-  translate(0, 0, zoomZ);
+  translate(WINDOW_WIDTH/4, WINDOW_HEIGHT/4, zoomZ);
   rotateY(yaw * SCALE_DOWN_YAW_RATE_OF_CHANGE);
   rotateX(pitch * SCALE_DOWN_PITCH_RATE_OF_CHANGE);
   // draw the cube defining the flock space
