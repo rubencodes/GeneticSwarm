@@ -43,7 +43,6 @@ public class Behavior {
 
   //Auto-Generate Behavior object
   public Behavior(String jsonBehavior) {
-    System.out.println(jsonBehavior);
     JsonArray behavior_array = null;
     JsonObject behavior = null;
     try {

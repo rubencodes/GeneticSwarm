@@ -1,10 +1,7 @@
 import processing.core.*; 
 import processing.xml.*; 
 
-import java.net.Authenticator; 
-import java.net.PasswordAuthentication; 
 import java.util.Random; 
-import javax.swing.*; 
 
 import javax.json.*; 
 import org.glassfish.json.*; 
@@ -52,19 +49,16 @@ public class MusicSwarm extends PApplet {
  * 		
  */
 
-
-
 // for random numbers
-
 
 
 public boolean insideButton = false;
 // ****************  GRAPHICS  ******************
 
 // window dimensions
-public static final int WINDOW_WIDTH = 400;
-public static final int WINDOW_HEIGHT = 400;
-public static final int WINDOW_DEPTH = 400;
+public static final int WINDOW_WIDTH = 800;
+public static final int WINDOW_HEIGHT = 800;
+public static final int WINDOW_DEPTH = 800;
 
 // number of dimensions in rendering 
 public static final int RENDER_2D = 1;
