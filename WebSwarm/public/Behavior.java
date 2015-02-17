@@ -68,28 +68,28 @@ public class Behavior {
     subBehaviors     = new Vector < Behavior > ();
 
     //split array by delimiter, convert to array of integers, and convert array to vector
-    for (String actionVarID : behavior.getString("if_property_ids").split(","))
+    for (String actionVarID : behavior.getString("if_property_ids", "").split(","))
       if (!actionVarID.equals(""))
         ifPropertyIDs.add(Integer.parseInt(actionVarID));
-    for (String actionID : behavior.getString("if_action_ids").split(","))
+    for (String actionID : behavior.getString("if_action_ids", "").split(","))
       if (!actionID.equals(""))
         ifActionIDs.add(Integer.parseInt(actionID));
-    for (String nullActionVarID : behavior.getString("else_property_ids").split(","))
+    for (String nullActionVarID : behavior.getString("else_property_ids", "").split(","))
       if (!nullActionVarID.equals(""))
         elsePropertyIDs.add(Integer.parseInt(nullActionVarID));
-    for (String nullActionID : behavior.getString("else_action_ids").split(","))
+    for (String nullActionID : behavior.getString("else_action_ids", "").split(","))
       if (!nullActionID.equals(""))
         elseActionIDs.add(Integer.parseInt(nullActionID));
 
-    velocityScale      = Float.parseFloat(behavior.getString("velocity_scale"));
-    maxSpeed           = Float.parseFloat(behavior.getString("max_speed"));
-    normalSpeed    	   = Float.parseFloat(behavior.getString("normal_speed"));
-    neighborhoodRadius = Float.parseFloat(behavior.getString("neighborhood_radius"));
-    separationWeight   = Float.parseFloat(behavior.getString("separation_weight"));
-    alignmentWeight    = Float.parseFloat(behavior.getString("alignment_weight"));
-    cohesionWeight     = Float.parseFloat(behavior.getString("cohesion_weight"));
-    pacekeepingWeight  = Float.parseFloat(behavior.getString("pacekeeping_weight"));
-    motionProbability  = Float.parseFloat(behavior.getString("rand_motion_probability"));
+    velocityScale      = Float.parseFloat(behavior.getString("velocity_scale", "0"));
+    maxSpeed           = Float.parseFloat(behavior.getString("max_speed", "0"));
+    normalSpeed        = Float.parseFloat(behavior.getString("normal_speed", "0"));
+    neighborhoodRadius = Float.parseFloat(behavior.getString("neighborhood_radius", "0"));
+    separationWeight   = Float.parseFloat(behavior.getString("separation_weight", "0"));
+    alignmentWeight    = Float.parseFloat(behavior.getString("alignment_weight", "0"));
+    cohesionWeight     = Float.parseFloat(behavior.getString("cohesion_weight", "0"));
+    pacekeepingWeight  = Float.parseFloat(behavior.getString("pacekeeping_weight", "0"));
+    motionProbability  = Float.parseFloat(behavior.getString("rand_motion_probability", "0"));
 
     for (int i = 1; i < behavior_array.getValuesAs(JsonObject.class).size(); i++) {
       JsonObject subBehavior = behavior_array.getValuesAs(JsonObject.class).get(i);
@@ -98,9 +98,8 @@ public class Behavior {
   }
 
   public Behavior(JsonObject behavior) {
-    System.out.println("SubBehavior Read: "+behavior.toString());
     comparatorId    = behavior.getInt("comparator_id");
-    propertyA      	= behavior.getInt("property_a_id");
+    propertyA       = behavior.getInt("property_a_id");
     randomPropertyB = behavior.getBoolean("random_property_b");
     propertyB       = behavior.getInt("property_b_id");
     depthLevel      = behavior.getInt("depth_level");
@@ -128,7 +127,7 @@ public class Behavior {
 
     velocityScale      = Float.parseFloat(behavior.getString("velocity_scale"));
     maxSpeed           = Float.parseFloat(behavior.getString("max_speed"));
-    normalSpeed    	   = Float.parseFloat(behavior.getString("normal_speed"));
+    normalSpeed        = Float.parseFloat(behavior.getString("normal_speed"));
     neighborhoodRadius = Float.parseFloat(behavior.getString("neighborhood_radius"));
     separationWeight   = Float.parseFloat(behavior.getString("separation_weight"));
     alignmentWeight    = Float.parseFloat(behavior.getString("alignment_weight"));
