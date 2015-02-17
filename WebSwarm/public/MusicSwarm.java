@@ -62,9 +62,9 @@ public boolean insideButton = false;
 // ****************  GRAPHICS  ******************
 
 // window dimensions
-public static final int WINDOW_WIDTH = 800;
-public static final int WINDOW_HEIGHT = 800;
-public static final int WINDOW_DEPTH = 800;
+public static final int WINDOW_WIDTH = 400;
+public static final int WINDOW_HEIGHT = 400;
+public static final int WINDOW_DEPTH = 400;
 
 // number of dimensions in rendering 
 public static final int RENDER_2D = 1;
@@ -183,7 +183,7 @@ public void run() {
 // setting up the simulation
 public void setup() {
   // window size and graphics mode
-  size(800, 800, P3D); 
+  size(400, 400, P3D); 
 
   timeStep = 0;
   System.out.println(behaviorString);
