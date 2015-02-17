@@ -175,7 +175,7 @@ public void draw() {
 
   // set the camera point of view
   float zoomZ = (zoom - ZOOM_SCALING_FACTOR) * ZOOM_RANGE;
-  translate(WINDOW_WIDTH/4, WINDOW_HEIGHT/4, zoomZ);
+  translate(0, 0, zoomZ);
   rotateY(yaw * SCALE_DOWN_YAW_RATE_OF_CHANGE);
   rotateX(pitch * SCALE_DOWN_PITCH_RATE_OF_CHANGE);
   // draw the cube defining the flock space

@@ -146,19 +146,6 @@ public class MusicSwarm extends PApplet {
 		// background is black
 		// (need to completely redraw the simulation at each time step)
 		background(0);
-
-		//draw reload button, watches for clicks
-		fill(buttonColor);
-		rect(10, 10, 100, 50);
-		textSize(28);
-		fill(0);
-		text("Reload", 15,45);
-		if (mouseX > 10 && mouseX < 110 && 
-	      mouseY > 10 && mouseY < 60) {
-			insideButton = true;
-		} else {
-			insideButton = false;
-		}
 		
 		// set the camera point of view
 		float zoomZ = (zoom - ZOOM_SCALING_FACTOR) * ZOOM_RANGE;
@@ -183,20 +170,6 @@ public class MusicSwarm extends PApplet {
 			allFlocks[flockID].removeDeadBoids();
 		}
 		
-	}
-
-	public void mousePressed() {
-		if(insideButton) { 
-			buttonColor = 240;
-			for(Flock f : allFlocks) {
-				if(f != null)
-					f.setBehavior(new Behavior());
-			}
-		}
-	}
-	
-	public void mouseReleased() {
-		buttonColor = 209;
 	}
 	
 	// Max calls these to change the parameters of the Flocks  ---------------------------------------
