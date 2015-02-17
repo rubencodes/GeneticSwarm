@@ -54,7 +54,7 @@ public class MusicSwarm extends PApplet {
 	private static final float SCALE_DOWN_YAW_RATE_OF_CHANGE= 0.05f;
 	private static final float SCALE_DOWN_PITCH_RATE_OF_CHANGE= 0.05f;
 	// to set zoom scale and range
-	private static final int ZOOM_SCALING_FACTOR = 150;
+	private static final int ZOOM_SCALING_FACTOR = 50;
 	private static final int ZOOM_RANGE = 10;
 	// accept messages from Max that control camera movement
 	private float pitch;  //rotate around X
@@ -125,47 +125,18 @@ public class MusicSwarm extends PApplet {
 	   PApplet.main(new String[] { "--present", "MusicSwarm" });
 	}
 	
-	public void run() {
-	  	JPanel myPanel = new JPanel();
-	  	myPanel.add(new JLabel("TESTING"));
-	  	JOptionPane.showConfirmDialog(null, myPanel, 
-	           "Enter your WebSwarm Email & Password.", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-	}
-	
 	// setting up the simulation
 	public void setup() {
 		// window size and graphics mode
-		size(800, 800, P3D); 
+		size(400, 400, P3D); 
 		
 		timeStep = 0;
 
-		JTextField usernameField = new JTextField(10);
-		JTextField passwordField = new JPasswordField(10);
-	
-	  	JPanel myPanel = new JPanel();
-	  	myPanel.add(new JLabel("Email:"));
-	  	myPanel.add(usernameField);
-	  	myPanel.add(Box.createHorizontalStrut(5)); // a spacer
-	  	myPanel.add(new JLabel("Password:"));
-	  	myPanel.add(passwordField);
-	  	int result = JOptionPane.showConfirmDialog(null, myPanel, 
-	           "Enter your WebSwarm Email & Password.", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-	  	if(result == JOptionPane.OK_OPTION) {	  		
-			String username = usernameField.getText();
-			String password = passwordField.getText();
-			
-		 	Authenticator.setDefault (new Authenticator() {
-			    protected PasswordAuthentication getPasswordAuthentication() {
-			        return new PasswordAuthentication (username, password.toCharArray());
-			    }
-			});
-
-			// create the Flocks  
-			for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
-				int flockSize = useDefaultFlockSize? defaultFlockSize: nonDefaultInitialFlockSizes[flockID];
-				allFlocks[flockID] = new Flock(flockID, flockSize, flockType, this, new Behavior());
-			}
-	  	}
+		// create the Flocks  
+		for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
+			int flockSize = useDefaultFlockSize? defaultFlockSize: nonDefaultInitialFlockSizes[flockID];
+			allFlocks[flockID] = new Flock(flockID, flockSize, flockType, this, new Behavior());
+		}
 	}
 	
 	// the "loop forever" method in processing
@@ -191,7 +162,7 @@ public class MusicSwarm extends PApplet {
 		
 		// set the camera point of view
 		float zoomZ = (zoom - ZOOM_SCALING_FACTOR) * ZOOM_RANGE;
-		translate(WINDOW_WIDTH/2,WINDOW_HEIGHT/2,zoomZ);
+		translate(WINDOW_WIDTH/4,WINDOW_HEIGHT/4,zoomZ);
 		rotateY(yaw * SCALE_DOWN_YAW_RATE_OF_CHANGE);
 		rotateX(pitch * SCALE_DOWN_PITCH_RATE_OF_CHANGE);
 		// draw the cube defining the flock space

@@ -1,9 +1,11 @@
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 import java.util.Vector;
+
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -45,23 +47,16 @@ public class Behavior {
  
     //Auto-Generate Behavior object
     public Behavior() {
-    	URL url = null;
-		try {
-			url = new URL("http://webswarm.herokuapp.com/swarm_behaviors/next.json");
-		} catch (MalformedURLException e3) {
-			e3.printStackTrace();
-		}
-		JsonArray behavior_array = null;
+    	JsonArray behavior_array = null;
 		JsonObject behavior = null;
-		try (InputStream is = url.openStream();
-				JsonReader rdr = Json.createReader(is)) {
+		try {
+			JsonReader rdr = Json.createReader(new StringReader("[{\"id\":126,\"comparator_id\":2,\"property_a_id\":4,\"property_b_id\":3,\"random_property_b\":false,\"depth_level\":0,\"if_property_ids\":\"7,4,6,2,5,4,2\",\"if_action_ids\":\"0,2,2,1,2,2,1\",\"else_property_ids\":\"\",\"else_action_ids\":\"\",\"if_number_bank\":\"0.281047925349184,3,0.3228132207225536,2,0.46542310729733194,4,10\",\"else_number_bank\":\"\",\"subbehavior_ids\":null,\"velocity_scale\":\"0.06176711204622852\",\"max_speed\":\"2.0\",\"normal_speed\":\"5.0\",\"neighborhood_radius\":\"91.0\",\"separation_weight\":\"63.0\",\"alignment_weight\":\"0.02937913523077018\",\"cohesion_weight\":\"0.1097344361058983\",\"pacekeeping_weight\":\"0.6015516388425836\",\"rand_motion_probability\":\"0.4431057798715304\",\"rating\":0}]"));
 			behavior_array = rdr.readArray();
 			behavior = behavior_array.getValuesAs(JsonObject.class).get(0);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 
-    	System.out.println("Behavior Read: "+behavior.toString());
     	comparatorId    = behavior.getInt("comparator_id");
     	propertyA      	= behavior.getInt("property_a_id");
     	randomPropertyB = behavior.getBoolean("random_property_b");
