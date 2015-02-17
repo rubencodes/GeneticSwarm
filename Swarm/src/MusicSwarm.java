@@ -23,24 +23,10 @@
  * 		
  */
 
-
-
-// we use Open Sound Control for communication with Max/MSP
-// http://opensoundcontrol.org/
-// more details in code comments below
-import oscP5.*;
-import netP5.*;
 // Processing classes (including graphics)
 import processing.core.PApplet;
 import processing.core.PVector;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 // for random numbers
@@ -48,14 +34,8 @@ import java.util.Random;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class MusicSwarm extends PApplet { 
-
-	// ****************  PROCESSING/MAX COMMUNICATION  ******************
-
-	// OSC communication objects; described more fully in the setup method
-	OscP5 oscP5;
-	NetAddress myRemoteLocation;
-
 	public boolean insideButton = false;
 	// ****************  GRAPHICS  ******************
 
@@ -145,50 +125,18 @@ public class MusicSwarm extends PApplet {
 	   PApplet.main(new String[] { "--present", "MusicSwarm" });
 	}
 	
+	public void run() {
+	  	JPanel myPanel = new JPanel();
+	  	myPanel.add(new JLabel("TESTING"));
+	  	JOptionPane.showConfirmDialog(null, myPanel, 
+	           "Enter your WebSwarm Email & Password.", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+	}
+	
 	// setting up the simulation
 	public void setup() {
-
 		// window size and graphics mode
 		size(800, 800, P3D); 
 		
-		// Processing/Max communication
-		// NOTE: for some reason that is not clear to me, this must be set up before the flocks 
-		// are created in order to avoid a null pointer exception in Boid.java, line 1740:
-		// 		oscP5.send(AnalysisMessage, myRemoteLocation);
-		
-		// listen for incoming messages from udpsend in Max at port 8090;
-		//oscP5 = new OscP5(this,8090);
-
-		// a NetAddress with an IP address and a port number is needed as a 
-		// parameter in oscP5.send() to send messages to Max; this NetAddress
-		// specifies that messages will be sent to port 8080, the port that 
-		// udpreceive in max is set to
-		// NOTE (5/14/13): does not seem to be used
-		//myRemoteLocation = new NetAddress("127.0.0.1", 8080);
-
-		// osc plug service:
-		// osc messages with a specific address pattern can be automatically
-		// forwarded to a specific method of an object. for example, in the first
-		// plug below, a message with address pattern /flockSize will be forwarded 
-		// to method setFlockSize (defined in last group of methods below). that 
-		// method test takes 2 int arguments, so each message with address pattern 
-		// /flockSize and typetag ii will be forwarded to setFlockSize(int flockSize, int flockID)
-		//
-//		oscP5.plug(this,"setFlockSize","/flockSize");
-//		oscP5.plug(this,"setVelocityScale","/velocity");
-//		oscP5.plug(this,"setMaxSpeed","/maxSpeed");
-//		oscP5.plug(this,"setNormalSpeed","/normalSpeed");
-//		oscP5.plug(this,"setNeighborRadius","/neighbordist");
-//		oscP5.plug(this,"setSeparationWeight","/sepwt");
-//		oscP5.plug(this,"setAlignWeight","/algwt");
-//		oscP5.plug(this,"setCohesionWeight","/cohwt");
-//		oscP5.plug(this,"setPacekeepingWeight","/pacewt");
-//		oscP5.plug(this,"setRandomMotionProbability","/randmotprob");
-//		oscP5.plug(this,"setProximityThreshold", "/proxThresh");
-//		oscP5.plug(this,"setMortality", "/mortality");
-//		oscP5.plug(this,"setWindVector", "/windVector");
-//		oscP5.plug(this,"setCameraMove", "/camMove");
-//		oscP5.plug(this,"setAddNewBoid", "/newBoidSource");		
 		timeStep = 0;
 
 		JTextField usernameField = new JTextField(10);
@@ -215,8 +163,7 @@ public class MusicSwarm extends PApplet {
 			// create the Flocks  
 			for (int flockID = 1; flockID <= NUM_FLOCKS; flockID++){    
 				int flockSize = useDefaultFlockSize? defaultFlockSize: nonDefaultInitialFlockSizes[flockID];
-				allFlocks[flockID] = 
-					new Flock(flockID, flockSize, flockType, this, oscP5, myRemoteLocation, new Behavior());
+				allFlocks[flockID] = new Flock(flockID, flockSize, flockType, this, new Behavior());
 			}
 	  	}
 	}

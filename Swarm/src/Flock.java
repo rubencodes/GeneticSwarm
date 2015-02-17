@@ -17,12 +17,6 @@
  * 
  */
 
-
-// we use Open Sound Control for communication with Max/MSP
-// http://opensoundcontrol.org/
-import oscP5.*;
-import netP5.*;
-
 // Processing classes 
 import processing.core.PApplet;
 import processing.core.PVector;
@@ -31,8 +25,6 @@ import processing.core.PVector;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
-import java.util.Random;
-import java.util.Vector;
 
 
 public class Flock {
@@ -72,12 +64,9 @@ public class Flock {
 	private Behavior behavior;
 	
 	// osc communication objects (communication with Max)
-	private OscP5 oscP5;
-	private NetAddress myRemoteLocation;
 
 	// constructor
-	Flock (int flockID, int numBoids, int flockType, PApplet parent, 
-			OscP5 oscP5, NetAddress myRemoteLocation, Behavior behavior) {
+	Flock (int flockID, int numBoids, int flockType, PApplet parent, Behavior behavior) {
 
 		// make the Boids a synchronizedList so we can use this as a way to limit access to the Flocks; 
 		// this is necessary so that the program doesn't crash when Max changes a Flock size in the 
@@ -109,7 +98,7 @@ public class Flock {
 											   MusicSwarm.rand.nextInt(MusicSwarm.WINDOW_DEPTH+1) - MusicSwarm.WINDOW_DEPTH/2);
 			Boid boid = new Boid(flockID, boidID, boidLocation, velocityScale, maxSpeed, normalSpeed, neighborRadius, 
 					separationWeight, alignmentWeight, cohesionWeight, pacekeepingWeight, randomMotionProbability, proximityThreshold, 
-					behavior, parent, oscP5, myRemoteLocation);
+					behavior, parent);
 			backingBoids.add(boid); 
 		}
 
@@ -117,8 +106,6 @@ public class Flock {
 		// to send to the Boid constructor if we create new Boids later 
 		this.parent = parent;
 		this.flockID = flockID;
-		this.oscP5 = oscP5;
-		this.myRemoteLocation = myRemoteLocation;
 	}
 
 
@@ -196,7 +183,7 @@ public class Flock {
 			backingBoids.ensureCapacity(backingBoids.size() + 1); 
 			Boid boid = new Boid(flockID, backingBoids.size(), location, velocityScale, maxSpeed,  normalSpeed,  neighborRadius, 
 					separationWeight, alignmentWeight, cohesionWeight, pacekeepingWeight, randomMotionProbability, proximityThreshold, 
-					behavior, parent, oscP5, myRemoteLocation);
+					behavior, parent);
 			backingBoids.add(boid); 
 		}
 	}
@@ -286,29 +273,6 @@ public class Flock {
 			velocityDeviationZ /= boidsSize;
 			velocityAveDeviation.set(velocityDeviationX, velocityDeviationY, velocityDeviationY);
 			velocityMagnitudeDeviation /= boidsSize;
-
-			//send stats to osc
-			// NEED TO SEND Z AXIS DATA TO OSC !!!!!
-			OscMessage AnalysisMessage = new OscMessage("/FlockAnalysis");
-			AnalysisMessage.add(flockID);
-			AnalysisMessage.add(locationMean.x);
-			AnalysisMessage.add(locationMean.y);
-			AnalysisMessage.add(locationMean.z);
-			AnalysisMessage.add(locationAveDeviation.x);
-			AnalysisMessage.add(locationAveDeviation.y);
-			AnalysisMessage.add(locationAveDeviation.z);
-
-			AnalysisMessage.add(velocityMean.x);
-			AnalysisMessage.add(velocityMean.y);
-			AnalysisMessage.add(velocityMean.z);
-			AnalysisMessage.add(velocityAveDeviation.x);
-			AnalysisMessage.add(velocityAveDeviation.y);
-			AnalysisMessage.add(velocityAveDeviation.z);
-			AnalysisMessage.add(velocityMagnitudeMean);
-			AnalysisMessage.add(velocityMagnitudeDeviation);
-
-//			oscP5.send(AnalysisMessage, myRemoteLocation); 
-
 		}
 
 	}
@@ -441,7 +405,6 @@ public class Flock {
 	}
 
 	void setMortality(boolean boidMortality){
-
 		synchronized(boids) {
 			this.boidMortality = boidMortality;
 		}

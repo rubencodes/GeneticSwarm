@@ -24,8 +24,6 @@
 
 // we use Open Sound Control for communication with Max/MSP
 // http://opensoundcontrol.org/
-import oscP5.*;
-import netP5.*;
 
 // Processing classes 
 import processing.core.PApplet;
@@ -34,8 +32,6 @@ import processing.core.PVector;
 
 // data structure for the flock
 import java.util.List;
-import java.util.Random;
-import java.util.Vector;
 
 public class Boid {
 	// make components of initial velocity very small 
@@ -75,10 +71,6 @@ public class Boid {
 	// needed for access to rendering methods
 	private PApplet parent;
 
-	// osc communication objects
-	private OscP5 oscP5;
-	private NetAddress myRemoteLocation;
-
 	// for fooling around with various types of motion (not all of which are actually predator/prey)  ;-)
 	private int myPreyID = 0;
 	private Boid preyBoid = null;
@@ -87,7 +79,7 @@ public class Boid {
 	public Boid(int flockID, int boidID, PVector location, float velocityScale, 
 			float maxSpeed, float normalSpeed, float neighborRadius, float separationWeight, float alignWeight, 
 			float cohesionWeight, float pacekeepingWeight, float randomMotionProbability, float proximityThreshold,
-			Behavior b, PApplet parent, OscP5 oscP5, NetAddress myRemoteLocation) {
+			Behavior b, PApplet parent) {
 
 		this.flockID = flockID;
 		this.boidID = boidID;
@@ -113,12 +105,7 @@ public class Boid {
 		myPreyID = 0; 
 
 		// for rendering
-		this.parent = parent;  	
-		
-		// for communication with Max
-		this.oscP5 = oscP5;
-		this.myRemoteLocation = myRemoteLocation;
-
+		this.parent = parent;
 	}
 
 
@@ -250,11 +237,6 @@ public class Boid {
 						// draw lines between Boids from the same flock in the same neighborhood
 						if (flockID == nextFlockID)
 							connectBoids(otherBoid);
-
-						// report proximity events to osc
-						if (dist < proximityThreshold)
-							reportCollision(otherBoid);
-
 					}
 				} 
 			}
@@ -328,7 +310,6 @@ public class Boid {
 	// nice behavior handcrafted at PERFORMAMATICS Workshop (January, 2013)
 	// to calculate motions of Boids and detect proximity events
 	void calcNewVelocityNiceBehaviorFromWorkshop(Flock[] allFlocks) {
-		Random r = new Random(); //playing
 		// the new acceleration
 		PVector acceleration = new PVector(0.0f,0.0f,0.0f);
 
@@ -389,11 +370,6 @@ public class Boid {
 						// draw lines between Boids from the same flock in the same neighborhood
 						if (flockID == nextFlockID)
 							connectBoids(otherBoid);
-
-						// report proximity events to osc
-						if (dist < proximityThreshold)
-							reportCollision(otherBoid);
-
 					}
 				} 
 			}
@@ -520,7 +496,7 @@ public class Boid {
 		// so we need to count boids in the boid's own flock as well as boids in all the flocks 
 		// (in the neighborhood)
 		int numNeighborsOwnFlock = 0;
-		int numNeighborsAllFlocks = 0;
+//		int numNeighborsAllFlocks = 0;
 
 		// need to get info on all Boids in all Flocks
 		for (int nextFlockID = 1 ; nextFlockID < allFlocks.length ; nextFlockID++) {
@@ -564,11 +540,6 @@ public class Boid {
 						// draw connected components
 						if (flockID == nextFlockID)
 							connectBoids(otherBoid);
-
-						// report proximity events to osc
-						if (dist < proximityThreshold)
-							reportCollision(otherBoid);
-
 					}
 				} 
 			}
@@ -690,7 +661,7 @@ public class Boid {
 		// so we need to count boids in the boid's own flock as well as boids in all the flocks 
 		// (in the neighborhood)
 		int numNeighborsOwnFlock = 0;
-		int numNeighborsAllFlocks = 0;
+//		int numNeighborsAllFlocks = 0;
 
 		// will need this later to create a vector toward the prey for all the predators
 		Boid preyBoid = null;
@@ -746,11 +717,6 @@ public class Boid {
 						// draw lines between Boids from the same flock in the same neighborhood
 						if (flockID == nextFlockID)
 							connectBoids(otherBoid);
-
-						// report proximity events to osc
-						if (dist < proximityThreshold)
-							reportCollision(otherBoid);
-
 					}
 
 				}
@@ -946,11 +912,6 @@ public class Boid {
 						// draw lines between Boids from the same flock in the same neighborhood
 						if (flockID == nextFlockID)
 							connectBoids(otherBoid);
-
-						// report proximity events to osc
-						if (dist < proximityThreshold)
-							reportCollision(otherBoid);
-
 					}
 
 				}
@@ -1162,11 +1123,6 @@ public class Boid {
 						// draw lines between Boids from the same flock in the same neighborhood
 						if (flockID == nextFlockID)
 							connectBoids(otherBoid);
-
-						// report proximity events to osc
-						if (dist < proximityThreshold)
-							reportCollision(otherBoid);
-
 					}
 
 				}
@@ -1266,27 +1222,6 @@ public class Boid {
 		nextVelocity.mult(0.5f);     
 
 	}
-
-
-
-	
-	
-	// let Max know that two Boids are within a certain distance of each other; 
-	// that distance is proximityThreshold and the check is made in the
-	// calcNewVelocity method(s) to avoid mkaing unecessary method calls
-	void reportCollision(Boid otherBoid) {
-		
-			OscMessage myMessage = new OscMessage("/collision");
-			myMessage.add(location.x);                   // add the x coordinate
-			myMessage.add(MusicSwarm.WINDOW_WIDTH);      // add the width for proper x scaling
-			myMessage.add(location.y);                   // add the y coordinate
-			myMessage.add(MusicSwarm.WINDOW_HEIGHT);     // add the height for proper y scaling
-			myMessage.add(flockID);
-			myMessage.add(otherBoid.flockID);
-//			oscP5.send(myMessage, myRemoteLocation); 
-	}
-
-
 
 	// draw a line between two boids;
 	// the method is called in the calcNewVelocity method(s),
